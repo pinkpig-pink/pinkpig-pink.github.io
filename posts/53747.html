@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/posts/53747/1-1.jpeg">
 <meta property="article:published_time" content="2024-10-28T12:04:35.000Z">
-<meta property="article:modified_time" content="2024-10-28T12:15:51.864Z">
+<meta property="article:modified_time" content="2024-10-28T12:29:52.372Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -304,98 +304,98 @@
 <li>scanBarcode  –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/scan-scanbarcode-api-V5#section829511911349">scanBarcode.startScanForResult</a>  –&gt;默认扫码模块</li>
 </ol>
 <h3 id="业务实现流程"><a href="#业务实现流程" class="headerlink" title="业务实现流程"></a>业务实现流程</h3><p><img src="/posts/53747/1-1.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><div class="code-wrapper"><pre><code class="hljs ArkTs">// 掌握：二维码组件
-import &#123; componentSnapshot, promptAction &#125; from &#x27;@kit.ArkUI&#x27;
-import image from &#x27;@ohos.multimedia.image&#x27;
-import &#123; fileIo, fileUri &#125; from &#x27;@kit.CoreFileKit&#x27;
-import &#123; photoAccessHelper &#125; from &#x27;@kit.MediaLibraryKit&#x27;
-import scanBarcode from &#x27;@hms.core.scan.scanBarcode&#x27;
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 掌握：二维码组件</span>
+<span class="hljs-keyword">import</span> &#123; componentSnapshot, promptAction &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@kit.ArkUI&#x27;</span>
+<span class="hljs-keyword">import</span> image <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@ohos.multimedia.image&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; fileIo, fileUri &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@kit.CoreFileKit&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; photoAccessHelper &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@kit.MediaLibraryKit&#x27;</span>
+<span class="hljs-keyword">import</span> scanBarcode <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hms.core.scan.scanBarcode&#x27;</span>
 
-// 掌握：如何给组件截图
-// 截图后将图片保存到相册
-// 1. PixelMap格式数据转化为二进制数据
-// 2. 通过 fileIo 将二进制数据写入到缓存目录
-// 3. 再从缓存目录下载到相册
+<span class="hljs-comment">// 掌握：如何给组件截图</span>
+<span class="hljs-comment">// 截图后将图片保存到相册</span>
+<span class="hljs-comment">// 1. PixelMap格式数据转化为二进制数据</span>
+<span class="hljs-comment">// 2. 通过 fileIo 将二进制数据写入到缓存目录</span>
+<span class="hljs-comment">// 3. 再从缓存目录下载到相册</span>
 
-@Entry
-@Component
-struct TestPage &#123;
-  @State
-  img: PixelMap | null = null
+<span class="hljs-meta">@Entry</span>
+<span class="hljs-meta">@Component</span>
+struct <span class="hljs-title class_">TestPage</span> &#123;
+  <span class="hljs-meta">@State</span>
+  <span class="hljs-attr">img</span>: <span class="hljs-title class_">PixelMap</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>
 
-  build() &#123;
-    Column() &#123;
-      Row() &#123;
-        Button(&#x27;点我截图&#x27;)
-          .onClick(() =&gt; &#123;
-            // 获取指定Id组件的组件截图，返回PixelMap类型数据
-            this.img = componentSnapshot.getSync(&#x27;QRCode&#x27;)
+  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-title class_">Column</span>() &#123;
+      <span class="hljs-title class_">Row</span>() &#123;
+        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;点我截图&#x27;</span>)
+          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;
+            <span class="hljs-comment">// 获取指定Id组件的组件截图，返回PixelMap类型数据</span>
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">img</span> = componentSnapshot.<span class="hljs-title function_">getSync</span>(<span class="hljs-string">&#x27;QRCode&#x27;</span>)
           &#125;)
-        QRCode(&#x27;http://www.baidu.com&#x27;)
-          .id(&#x27;QRCode&#x27;)
+        <span class="hljs-title class_">QRCode</span>(<span class="hljs-string">&#x27;http://www.baidu.com&#x27;</span>)
+          .<span class="hljs-title function_">id</span>(<span class="hljs-string">&#x27;QRCode&#x27;</span>)
       &#125;
-      .layoutWeight(1)
-      .border(&#123; width: 2, color: Color.Pink &#125;)
-      .backgroundColor(Color.Orange)
-      .width(&#x27;100%&#x27;)
+      .<span class="hljs-title function_">layoutWeight</span>(<span class="hljs-number">1</span>)
+      .<span class="hljs-title function_">border</span>(&#123; <span class="hljs-attr">width</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">color</span>: <span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span> &#125;)
+      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Orange</span>)
+      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
 
 
-      Row() &#123;
-        Image(this.img)
-          .width(&#x27;80%&#x27;)
+      <span class="hljs-title class_">Row</span>() &#123;
+        <span class="hljs-title class_">Image</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">img</span>)
+          .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;80%&#x27;</span>)
       &#125;
-      .layoutWeight(1)
-      .justifyContent(FlexAlign.Center)
-      .alignItems(VerticalAlign.Center)
+      .<span class="hljs-title function_">layoutWeight</span>(<span class="hljs-number">1</span>)
+      .<span class="hljs-title function_">justifyContent</span>(<span class="hljs-title class_">FlexAlign</span>.<span class="hljs-property">Center</span>)
+      .<span class="hljs-title function_">alignItems</span>(<span class="hljs-title class_">VerticalAlign</span>.<span class="hljs-property">Center</span>)
 
-      SaveButton()
-        .onClick(async () =&gt; &#123;
-          // TODO  转换像素图片
-          // 创建图片打包控制器
-          const Packer = image.createImagePacker()
-          // 将PixelMap像素类型数据转换为图片数据类型，其返回的是一个二进制的数据类型
-          const arrayBuffer = await Packer.packing(this.img, &#123; format: &#x27;image/jpeg&#x27;, quality: 98 &#125;)
+      <span class="hljs-title class_">SaveButton</span>()
+        .<span class="hljs-title function_">onClick</span>(<span class="hljs-title function_">async</span> () =&gt; &#123;
+          <span class="hljs-comment">// TODO  转换像素图片</span>
+          <span class="hljs-comment">// 创建图片打包控制器</span>
+          <span class="hljs-keyword">const</span> <span class="hljs-title class_">Packer</span> = image.<span class="hljs-title function_">createImagePacker</span>()
+          <span class="hljs-comment">// 将PixelMap像素类型数据转换为图片数据类型，其返回的是一个二进制的数据类型</span>
+          <span class="hljs-keyword">const</span> arrayBuffer = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Packer</span>.<span class="hljs-title function_">packing</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">img</span>, &#123; <span class="hljs-attr">format</span>: <span class="hljs-string">&#x27;image/jpeg&#x27;</span>, <span class="hljs-attr">quality</span>: <span class="hljs-number">98</span> &#125;)
 
-          // TODO 将二进制图片数据保存到缓存
-          // 获取上下文，并拼接一个要保存到的文件路径
-          const context = getContext(this)
-          const filePath = `$&#123;context.cacheDir&#125;/$&#123;Date.now()&#125;.jpeg`
+          <span class="hljs-comment">// TODO 将二进制图片数据保存到缓存</span>
+          <span class="hljs-comment">// 获取上下文，并拼接一个要保存到的文件路径</span>
+          <span class="hljs-keyword">const</span> context = <span class="hljs-title function_">getContext</span>(<span class="hljs-variable language_">this</span>)
+          <span class="hljs-keyword">const</span> filePath = <span class="hljs-string">`<span class="hljs-subst">$&#123;context.cacheDir&#125;</span>/<span class="hljs-subst">$&#123;<span class="hljs-built_in">Date</span>.now()&#125;</span>.jpeg`</span>
 
-          // 以创建、读写的模式打开缓存目录路径
-          const file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE)
+          <span class="hljs-comment">// 以创建、读写的模式打开缓存目录路径</span>
+          <span class="hljs-keyword">const</span> file = fileIo.<span class="hljs-title function_">openSync</span>(filePath, fileIo.<span class="hljs-property">OpenMode</span>.<span class="hljs-property">CREATE</span> | fileIo.<span class="hljs-property">OpenMode</span>.<span class="hljs-property">READ_WRITE</span>)
 
-          // 将二进制数据写入缓存目录文件
-          fileIo.writeSync(file.fd, arrayBuffer!)
-          // 关闭文件
-          fileIo.closeSync(file.fd)
+          <span class="hljs-comment">// 将二进制数据写入缓存目录文件</span>
+          fileIo.<span class="hljs-title function_">writeSync</span>(file.<span class="hljs-property">fd</span>, arrayBuffer!)
+          <span class="hljs-comment">// 关闭文件</span>
+          fileIo.<span class="hljs-title function_">closeSync</span>(file.<span class="hljs-property">fd</span>)
 
-          // TODO 将缓存文件保存到图库
-          try &#123;
-            // 1. 获取完成uri路径 (uri  统一资源标志符)
-            let uri = fileUri.getUriFromPath(filePath) // 拼接完整的uri路径， 在前面加上  协议:app名称
-            // 2. 创建一个相册模块实例对象
-            const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context)
-            // 3. 使用相册管理模块，通过指定的uri路径，复制图片文件创建到到相册图片文件中
-            const assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, uri)
+          <span class="hljs-comment">// TODO 将缓存文件保存到图库</span>
+          <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 1. 获取完成uri路径 (uri  统一资源标志符)</span>
+            <span class="hljs-keyword">let</span> uri = fileUri.<span class="hljs-title function_">getUriFromPath</span>(filePath) <span class="hljs-comment">// 拼接完整的uri路径， 在前面加上  协议:app名称</span>
+            <span class="hljs-comment">// 2. 创建一个相册模块实例对象</span>
+            <span class="hljs-keyword">const</span> phAccessHelper = photoAccessHelper.<span class="hljs-title function_">getPhotoAccessHelper</span>(context)
+            <span class="hljs-comment">// 3. 使用相册管理模块，通过指定的uri路径，复制图片文件创建到到相册图片文件中</span>
+            <span class="hljs-keyword">const</span> assetChangeRequest = photoAccessHelper.<span class="hljs-property">MediaAssetChangeRequest</span>.<span class="hljs-title function_">createImageAssetRequest</span>(context, uri)
 
-            // 4. 通过相册实例提交创建图片请求
-            await phAccessHelper.applyChanges(assetChangeRequest);
-            promptAction.showToast(&#123; message: &#x27;保存成功&#x27; &#125;)
-          &#125; catch (err) &#123;
-            AlertDialog.show(&#123; message: JSON.stringify(err, null, 2), alignment: DialogAlignment.Center &#125;)
+            <span class="hljs-comment">// 4. 通过相册实例提交创建图片请求</span>
+            <span class="hljs-keyword">await</span> phAccessHelper.<span class="hljs-title function_">applyChanges</span>(assetChangeRequest);
+            promptAction.<span class="hljs-title function_">showToast</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;保存成功&#x27;</span> &#125;)
+          &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+            <span class="hljs-title class_">AlertDialog</span>.<span class="hljs-title function_">show</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(err, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>), <span class="hljs-attr">alignment</span>: <span class="hljs-title class_">DialogAlignment</span>.<span class="hljs-property">Center</span> &#125;)
           &#125;
 
 
         &#125;)
 
-      Button(&#x27;扫码&#x27;)
-        .onClick(async () =&gt; &#123;
-          // 当开发app，需要适配多端的时候，某一端可能存在无扫码功能，要进行判断
-          if (canIUse(&#x27;SystemCapability.Multimedia.Scan.ScanBarcode&#x27;)) &#123;
-            const res = await scanBarcode.startScanForResult(getContext(this))
-            AlertDialog.show(&#123; message: JSON.stringify(res, null, 2), alignment: DialogAlignment.Center &#125;)
-          &#125; else &#123;
-            promptAction.showToast(&#123; message: &#x27;当前设备不支持&#x27; &#125;)
+      <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;扫码&#x27;</span>)
+        .<span class="hljs-title function_">onClick</span>(<span class="hljs-title function_">async</span> () =&gt; &#123;
+          <span class="hljs-comment">// 当开发app，需要适配多端的时候，某一端可能存在无扫码功能，要进行判断</span>
+          <span class="hljs-keyword">if</span> (<span class="hljs-title function_">canIUse</span>(<span class="hljs-string">&#x27;SystemCapability.Multimedia.Scan.ScanBarcode&#x27;</span>)) &#123;
+            <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> scanBarcode.<span class="hljs-title function_">startScanForResult</span>(<span class="hljs-title function_">getContext</span>(<span class="hljs-variable language_">this</span>))
+            <span class="hljs-title class_">AlertDialog</span>.<span class="hljs-title function_">show</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>), <span class="hljs-attr">alignment</span>: <span class="hljs-title class_">DialogAlignment</span>.<span class="hljs-property">Center</span> &#125;)
+          &#125; <span class="hljs-keyword">else</span> &#123;
+            promptAction.<span class="hljs-title function_">showToast</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;当前设备不支持&#x27;</span> &#125;)
           &#125;
 
         &#125;)
