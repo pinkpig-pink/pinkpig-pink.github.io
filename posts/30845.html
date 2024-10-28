@@ -21,22 +21,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.  基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​	a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​	b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容    &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（">
+    <meta name="description" content="鸿蒙应用开发–文件上传业务需求唤起相册 –&gt; 从相册选择图片 –&gt; 将相册选择的图片上传到服务器 前置知识点： @ohos.file.picker选择器模块 –&gt;  PhotoViewPicker  –&gt;  从API version 12开始废弃。建议使用photoAccessHelper.PhotoViewPicker替代 fileIo  –&gt;  fileIo.op">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swiper">
-<meta property="og:url" content="http://example.com/posts/23119.html">
+<meta property="og:title" content="HM-文件上传">
+<meta property="og:url" content="http://example.com/posts/30845.html">
 <meta property="og:site_name" content="Pinkpig">
-<meta property="og:description" content="1.  基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​	a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​	b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容    &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（">
+<meta property="og:description" content="鸿蒙应用开发–文件上传业务需求唤起相册 –&gt; 从相册选择图片 –&gt; 将相册选择的图片上传到服务器 前置知识点： @ohos.file.picker选择器模块 –&gt;  PhotoViewPicker  –&gt;  从API version 12开始废弃。建议使用photoAccessHelper.PhotoViewPicker替代 fileIo  –&gt;  fileIo.op">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-01T12:06:29.000Z">
-<meta property="article:modified_time" content="2024-10-28T12:16:35.193Z">
+<meta property="og:image" content="http://example.com/posts/30845/1-1.png">
+<meta property="article:published_time" content="2024-10-28T12:11:18.000Z">
+<meta property="article:modified_time" content="2024-10-28T12:14:37.488Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/posts/30845/1-1.png">
   
   
   
-  <title>Swiper - Pinkpig</title>
+  <title>HM-文件上传 - Pinkpig</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Swiper"></span>
+            <span id="subtitle" data-typed-text="HM-文件上传"></span>
           
         </div>
 
@@ -225,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-01 20:06" pubdate>
-          2024年9月1日 晚上
+        <time datetime="2024-10-28 20:11" pubdate>
+          2024年10月28日 晚上
         </time>
       </span>
     
@@ -237,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          828 字
+          660 字
         
       </span>
     
@@ -248,7 +249,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -285,199 +286,86 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Swiper</h1>
+            <h1 id="seo-header">HM-文件上传</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1.  基本用法"></a>1.  基本用法</h2><blockquote>
-<p>首先来看看如何设置轮播内容，以及设置尺寸</p>
-</blockquote>
-<ol>
-<li>轮播内容：内容作为<code>Swiper</code>的子组件即可</li>
-<li>尺寸：</li>
+                <h1 id="鸿蒙应用开发–文件上传"><a href="#鸿蒙应用开发–文件上传" class="headerlink" title="鸿蒙应用开发–文件上传"></a>鸿蒙应用开发–文件上传</h1><h3 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h3><p>唤起相册 –&gt; 从相册选择图片 –&gt; 将相册选择的图片上传到服务器</p>
+<h3 id="前置知识点："><a href="#前置知识点：" class="headerlink" title="前置知识点："></a>前置知识点：</h3><ol>
+<li><code>@ohos.file.picker</code>选择器模块 –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-file-picker-V5#photoviewpickerdeprecated"> PhotoViewPicker</a>  –&gt;  从API version 12开始废弃。建议使用<a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-photoaccesshelper-V5#photoviewpicker">photoAccessHelper.PhotoViewPicker</a>替代</li>
+<li>fileIo  –&gt;  <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-fileio-V5#fileioopensync">fileIo.openSync</a>  |  fileIo.writeSync  |   fileIo.closeSync    –&gt;  文件管理模块</li>
+<li><code>@ohos.request</code> (上传下载)模块 –&gt;<a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-request-V5#requestuploadfile9-1"> request.uploadFile</a></li>
 </ol>
-<p>​	a. 设置 <code>Swiper</code> 的尺寸：内容会拉伸为和 <code>Swiper</code> 一致（<strong>优先级高</strong>）</p>
-<p>​	b. 没有设置<code>Swiper</code>的尺寸，<code>Swiper</code>被子组件的尺寸撑开</p>
-<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-title class_">Swiper</span>() &#123;
-  <span class="hljs-comment">// 轮播内容 </span>
-  <span class="hljs-comment">// (设置尺寸，撑开swiper)</span>
-&#125;
-<span class="hljs-comment">// 设置尺寸（内容拉伸、优先级高）</span>
-.<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
-.<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)</code></pre></div>
+<h3 id="业务实现流程："><a href="#业务实现流程：" class="headerlink" title="业务实现流程："></a>业务实现流程：</h3><p><img src="/posts/30845/1-1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<div class="code-wrapper"><pre><code class="hljs TS"><span class="hljs-keyword">async</span> <span class="hljs-title function_">putUserAvatar</span>(<span class="hljs-params"></span>)&#123;
+<span class="hljs-comment">// TODO  用户选择图片</span>
+  <span class="hljs-comment">// 1. 创建一个图片选择器实例对象</span>
+  <span class="hljs-keyword">const</span> photoPick = <span class="hljs-keyword">new</span> picker.<span class="hljs-title class_">PhotoViewPicker</span>()
+  <span class="hljs-comment">// const xxx = new photoAccessHelper.PhotoViewPicker()</span>
 
-<h2 id="2-常用属性方法"><a href="#2-常用属性方法" class="headerlink" title="2.  常用属性方法"></a>2.  常用属性方法</h2><table>
-<thead>
-<tr>
-<th><strong>参数名</strong></th>
-<th align="left"><strong>参数类型</strong></th>
-<th align="left">参数描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>autoPlay</td>
-<td align="left">boolean</td>
-<td align="left">子组件是否自动播放。默认值：false<strong>说明：</strong>loop为false时，自动轮播到最后一页时停止轮播。手势切换后不是最后一页时继续播放。</td>
-</tr>
-<tr>
-<td>interval</td>
-<td align="left">number</td>
-<td align="left">使用自动播放时播放的时间间隔，单位为毫秒。默认值：3000</td>
-</tr>
-<tr>
-<td>vertical</td>
-<td align="left">boolean</td>
-<td align="left">是否为纵向滑动。默认值：false</td>
-</tr>
-<tr>
-<td>loop👎</td>
-<td align="left">boolean</td>
-<td align="left">是否开启无限循环播放。设置为true时表示无限循环播放，设置为false时表示只播放一次。默认值：true</td>
-</tr>
-</tbody></table>
-<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
-<span class="hljs-meta">@Component</span>
-struct <span class="hljs-title class_">Index</span> &#123;
-  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
-    <span class="hljs-title class_">Swiper</span>() &#123;
-      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;0&#x27;</span>)
-        .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
-        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Red</span>)
-        .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
-        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
-      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;1&#x27;</span>)
-        .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
-        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Green</span>)
-        .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
-        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
-    &#125;
-    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
-    .<span class="hljs-title function_">height</span>(<span class="hljs-number">160</span>)
-    .<span class="hljs-title function_">loop</span>(<span class="hljs-literal">false</span>) <span class="hljs-comment">// 是否开启循环 true/false</span>
-    .<span class="hljs-title function_">autoPlay</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 是否自动播放 true/false</span>
-    .<span class="hljs-title function_">interval</span>(<span class="hljs-number">4000</span>) <span class="hljs-comment">// 自动播放时间间隔 单位毫秒 默认3000</span>
-    .<span class="hljs-title function_">vertical</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 是否纵向滑动</span>
+  <span class="hljs-comment">// 2. 调用selected方法打开相册</span>
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> photoPick.<span class="hljs-title function_">select</span>(&#123;
+    <span class="hljs-title class_">MIMEType</span>: picker.<span class="hljs-property">PhotoViewMIMETypes</span>.<span class="hljs-property">IMAGE_TYPE</span>, <span class="hljs-comment">// 用户可选择的文件类型</span>
+    <span class="hljs-attr">maxSelectNumber</span>: <span class="hljs-number">3</span>    <span class="hljs-comment">// 用户可选择的文件数量</span>
+  &#125;)
+  
+<span class="hljs-comment">// TODO 判断是否选择图片</span>
+  <span class="hljs-comment">// 判断是否选择了图片</span>
+  <span class="hljs-keyword">if</span> (!res.<span class="hljs-property">photoUris</span>) &#123;
+    <span class="hljs-keyword">return</span>
   &#125;
+  <span class="hljs-comment">// AlertDialog.show(&#123; message: res.photoUris[0], alignment: DialogAlignment.Center &#125;)</span>
+
+  <span class="hljs-comment">// TODO 将文件复制到缓存目录，后续从缓存目录获取图片并上传</span>
+  <span class="hljs-comment">// fileIo.copyFileSync(&#x27;要复制的文件路径&#x27;,&#x27;复制到的目标文件路径&#x27;)</span>
+  <span class="hljs-comment">// fileIo.copyFileSync(&#x27;要复制的文件fd&#x27;,&#x27;复制到的目标文件路径&#x27;)</span>
+
+  <span class="hljs-comment">// 3. 获取app上下文</span>
+  <span class="hljs-keyword">const</span> context = <span class="hljs-title function_">getContext</span>(<span class="hljs-variable language_">this</span>)
+  <span class="hljs-comment">// 4. 拿到上下文中的缓存目录路径，作为后面保存图片的文件夹</span>
+  <span class="hljs-keyword">const</span> targetPath = <span class="hljs-string">`<span class="hljs-subst">$&#123;context.cacheDir&#125;</span>/xxx.jpg`</span>
+  <span class="hljs-comment">// 5. 以只读方式打开图片文件，拿到文件对象</span>
+  <span class="hljs-keyword">const</span> photoObj = fileIo.<span class="hljs-title function_">openSync</span>(res.<span class="hljs-property">photoUris</span>[<span class="hljs-number">0</span>], fileIo.<span class="hljs-property">OpenMode</span>.<span class="hljs-property">READ_ONLY</span>)
+
+  <span class="hljs-comment">// 6. 从图片对象中获取图片id ，复制文件到目标文件夹</span>
+  <span class="hljs-keyword">try</span> &#123;
+    fileIo.<span class="hljs-title function_">copyFileSync</span>(photoObj.<span class="hljs-property">fd</span>, targetPath)
+  &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+    <span class="hljs-title class_">AlertDialog</span>.<span class="hljs-title function_">show</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(err), <span class="hljs-attr">alignment</span>: <span class="hljs-title class_">DialogAlignment</span>.<span class="hljs-property">Center</span> &#125;)
+  &#125;
+
+  <span class="hljs-comment">// TODO 将缓存在cache中的图片文件上传</span>
+  <span class="hljs-comment">// request.uploadFile()返回的是个Promise对象，Promise.then返回的值.on监听其上传成功或失败</span>
+  <span class="hljs-keyword">const</span> task = <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">uploadFile</span>(context, &#123;
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hmajax.itheima.net/api/uploadimg&#x27;</span>,
+    <span class="hljs-attr">method</span>: http.<span class="hljs-property">RequestMethod</span>.<span class="hljs-property">POST</span>,
+    <span class="hljs-attr">header</span>: &#123;
+      <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&#x27;multipart/form-data&#x27;</span>
+    &#125;,
+    <span class="hljs-attr">data</span>: [], <span class="hljs-comment">// 额外提交的数据。后端要求的话就填，没有要求给一个空数组，这是一个必填属性</span>
+    <span class="hljs-attr">files</span>: [&#123;
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;xxx.jpg&#x27;</span>, <span class="hljs-comment">// 这个文件名，一定要带后缀</span>
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;img&#x27;</span>,    <span class="hljs-comment">// 这个值需要看接口文档，Body参数的名字</span>
+      <span class="hljs-attr">uri</span>: <span class="hljs-string">&quot;internal://cache/xxx.jpg&quot;</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;jpg&#x27;</span>
+    &#125;]
+  &#125;)
+  task.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;complete&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+    promptAction.<span class="hljs-title function_">showToast</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;头像上传成功&#x27;</span> &#125;)
+  &#125;)
+  task.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;fail&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+    promptAction.<span class="hljs-title function_">showToast</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;头像上传失败&#x27;</span> &#125;)
+  &#125;)
+  <span class="hljs-comment">// TODO 获取上传图片的结果，结果返回一个图片存储路径，渲染到视图</span>
+  <span class="hljs-comment">// 后端返回的数据在res.body中，可以log一下res，看一下数据结构组成</span>
+  task.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;headerReceive&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> upRes = res <span class="hljs-keyword">as</span> <span class="hljs-title class_">IRes</span>
+    <span class="hljs-keyword">let</span> url = (<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(upRes.<span class="hljs-property">body</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">IBody</span>).<span class="hljs-property">data</span>.<span class="hljs-property">url</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">img</span> = url
+  &#125;)
 &#125;</code></pre></div>
 
-<h2 id="3-调整导航点"><a href="#3-调整导航点" class="headerlink" title="3. 调整导航点"></a>3. 调整导航点</h2><div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-title class_">Swiper</span>()&#123;
-  <span class="hljs-comment">// 略</span>
-&#125;
-.<span class="hljs-title function_">indicator</span>(<span class="hljs-literal">false</span>) <span class="hljs-comment">// 关闭导航</span>
-.<span class="hljs-title function_">indicator</span>(<span class="hljs-title class_">Indicator</span>.<span class="hljs-title function_">dot</span>()) <span class="hljs-comment">// 圆点指示器（默认）</span>
-.<span class="hljs-title function_">indicator</span>(<span class="hljs-title class_">Indicator</span>.<span class="hljs-title function_">digit</span>()) <span class="hljs-comment">// 数字指示器</span></code></pre></div>
-
-<p><strong>位置属性：</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>参数名</strong></th>
-<th><strong>参数类型</strong></th>
-<th><strong>参数描述</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>left</td>
-<td>Length</td>
-<td>设置导航点距离Swiper组件左边的距离。默认值：0单位：vp</td>
-</tr>
-<tr>
-<td>top</td>
-<td>Length</td>
-<td>设置导航点距离Swiper组件顶部的距离。默认值：0单位：vp</td>
-</tr>
-<tr>
-<td>right</td>
-<td>Length</td>
-<td>设置导航点距离Swiper组件右边的距离。默认值：0单位：vp</td>
-</tr>
-<tr>
-<td>bottom</td>
-<td>Length</td>
-<td>设置导航点距离Swiper组件底部的距离。默认值：0单位：vp</td>
-</tr>
-</tbody></table>
-<p><strong>样式属性：</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>参数名</strong></th>
-<th><strong>参数类型</strong></th>
-<th><strong>参数描述</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>itemWidth</td>
-<td>Length</td>
-<td>设置Swiper组件圆点导航指示器的宽，不支持设置百分比。默认值：6单位：vp</td>
-</tr>
-<tr>
-<td>itemHeightLength</td>
-<td>Length</td>
-<td>设置Swiper组件圆点导航指示器的高，不支持设置百分比。默认值：6单位：vp</td>
-</tr>
-<tr>
-<td>selectedItemWidth</td>
-<td>Length</td>
-<td>设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。默认值：12单位：vp</td>
-</tr>
-<tr>
-<td>selectedItemHeight</td>
-<td>Length</td>
-<td>设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。默认值：6单位：vp</td>
-</tr>
-<tr>
-<td>color</td>
-<td><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-types-0000001774121374#ZH-CN_TOPIC_0000001774121374__resourcecolor">ResourceColor</a></td>
-<td>设置Swiper组件圆点导航指示器的颜色。默认值：’#182431’（10%透明度）</td>
-</tr>
-<tr>
-<td>selectedColor</td>
-<td>ResourceColor</td>
-<td>设置选中Swiper组件圆点导航指示器的颜色。默认值：’#007DFF’</td>
-</tr>
-</tbody></table>
-<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
-<span class="hljs-meta">@Component</span>
-struct <span class="hljs-title class_">Index</span> &#123;
-  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
-    <span class="hljs-title class_">Swiper</span>() &#123;
-      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;0&#x27;</span>)
-        .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
-        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Red</span>)
-        .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
-        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
-      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;1&#x27;</span>)
-        .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
-        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Green</span>)
-        .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
-        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
-      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;2&#x27;</span>)
-        .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
-        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Blue</span>)
-        .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
-        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
-    &#125;
-    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
-    .<span class="hljs-title function_">height</span>(<span class="hljs-number">160</span>)
-    <span class="hljs-comment">// .indicator(false) // 关闭导航点</span>
-    <span class="hljs-comment">// .indicator(Indicator.digit()) // 数字导航点</span>
-    .<span class="hljs-title function_">indicator</span>(
-      <span class="hljs-title class_">Indicator</span>.<span class="hljs-title function_">dot</span>()
-        .<span class="hljs-title function_">left</span>(<span class="hljs-number">10</span>)<span class="hljs-comment">// 左侧距离</span>
-        .<span class="hljs-title function_">top</span>(<span class="hljs-number">10</span>)<span class="hljs-comment">// 顶部距离</span>
-        .<span class="hljs-title function_">bottom</span>(<span class="hljs-number">10</span>)<span class="hljs-comment">// 底部距离</span>
-        .<span class="hljs-title function_">right</span>(<span class="hljs-number">10</span>)<span class="hljs-comment">// 右侧距离（距离属性组合使用，无需全部设置）</span>
-        .<span class="hljs-title function_">itemWidth</span>(<span class="hljs-number">20</span>)<span class="hljs-comment">// 指示器宽度</span>
-        .<span class="hljs-title function_">itemHeight</span>(<span class="hljs-number">20</span>)<span class="hljs-comment">// 指示器高度</span>
-        .<span class="hljs-title function_">selectedItemWidth</span>(<span class="hljs-number">30</span>)<span class="hljs-comment">// 选中指示器宽度</span>
-        .<span class="hljs-title function_">selectedItemHeight</span>(<span class="hljs-number">30</span>)<span class="hljs-comment">// 选中指示器高度</span>
-        .<span class="hljs-title function_">selectedColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Yellow</span>)<span class="hljs-comment">// 选中指示器颜色</span>
-        .<span class="hljs-title function_">color</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Blue</span>) <span class="hljs-comment">// 默认指示器宽度</span>
-    ) <span class="hljs-comment">// 圆形导航点</span>
-  &#125;
-&#125;</code></pre></div>
 
                 
               </div>
@@ -486,41 +374,6 @@ struct <span class="hljs-title class_">Index</span> &#123;
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/HarmonyOS/" class="category-chain-item">HarmonyOS</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/HarmonyOS/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/HarmonyOS/" class="print-no-link">#HarmonyOS</a>
-      
-    </div>
   
 </div>
 
@@ -530,8 +383,8 @@ struct <span class="hljs-title class_">Index</span> &#123;
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Swiper</div>
-      <div>http://example.com/posts/23119.html</div>
+      <div>HM-文件上传</div>
+      <div>http://example.com/posts/30845.html</div>
     </div>
     <div class="license-meta">
       
@@ -543,7 +396,7 @@ struct <span class="hljs-title class_">Index</span> &#123;
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月1日</div>
+          <div>2024年10月28日</div>
         </div>
       
       
@@ -575,18 +428,12 @@ struct <span class="hljs-title class_">Index</span> &#123;
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/5275.html" title="Grid">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Grid</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/271.html" title="Hexo基础配置">
-                        <span class="hidden-mobile">Hexo基础配置</span>
+                      <a href="/posts/53747.html" title="HM-二维码生成、保存、扫码">
+                        <span class="hidden-mobile">HM-二维码生成、保存、扫码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

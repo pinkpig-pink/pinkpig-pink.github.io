@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/posts/5275/3.2-2.png">
 <meta property="og:image" content="http://example.com/posts/5275/3.2-3.png">
 <meta property="article:published_time" content="2024-09-02T08:47:36.000Z">
-<meta property="article:modified_time" content="2024-10-07T08:37:16.352Z">
+<meta property="article:modified_time" content="2024-10-28T12:17:18.176Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -301,16 +301,16 @@
 <li>子组件<strong>必须</strong>是<code>GridItem</code>组件，需要展示的内容设置在 <code>GridItem</code> 内部既可</li>
 <li><code>GridItem</code> 只能有一个<strong>子组件</strong></li>
 </ol>
-<div class="code-wrapper"><pre><code class="hljs dart">Grid() &#123;
-  GridItem()&#123;
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-title class_">Grid</span>() &#123;
+  <span class="hljs-title class_">GridItem</span>()&#123;
     <span class="hljs-comment">// 展示的内容放在这里</span>
   &#125;
-  GridItem()&#123;
+  <span class="hljs-title class_">GridItem</span>()&#123;
     <span class="hljs-comment">// 展示的内容放在这里</span>
   &#125;
 &#125;      
-.columnsTemplate(<span class="hljs-string">&#x27;。。。&#x27;</span>)
-.rowsTemplate(<span class="hljs-string">&#x27;。。。。&#x27;</span>)</code></pre></div>
+.<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&#x27;。。。&#x27;</span>)
+.<span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-string">&#x27;。。。。&#x27;</span>)</code></pre></div>
 
 <p>  <img src="/posts/5275/3.1-1.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">      <img src="/posts/5275/3.1-2.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
 <table>
@@ -342,26 +342,26 @@
 <td>设置行与行的间距。默认值：0</td>
 </tr>
 </tbody></table>
-<div class="code-wrapper"><pre><code class="hljs ArkUI">// 掌握: Grid是一个容器组件, 可以布局网格
-// 语法: Grid 包住 GridItem , GirdItem只能有一个子组件
-@Entry
-@Component
-struct Index &#123;
-  build() &#123;
-    Grid() &#123;
-      ForEach(Array.from(&#123; length: 7 &#125;), (item: null, index: number) =&gt; &#123;
-        GridItem() &#123;
-          Text((index + 1).toString())
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 掌握: Grid是一个容器组件, 可以布局网格</span>
+<span class="hljs-comment">// 语法: Grid 包住 GridItem , GirdItem只能有一个子组件</span>
+<span class="hljs-meta">@Entry</span>
+<span class="hljs-meta">@Component</span>
+struct <span class="hljs-title class_">Index</span> &#123;
+  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-title class_">Grid</span>() &#123;
+      <span class="hljs-title class_">ForEach</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">7</span> &#125;), <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;
+        <span class="hljs-title class_">GridItem</span>() &#123;
+          <span class="hljs-title class_">Text</span>((index + <span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>())
         &#125;
-        .backgroundColor(Color.Pink)
+        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)
       &#125;)
     &#125;
-    .columnsTemplate(&#x27;1fr 2fr 1fr&#x27;)
-    .rowsTemplate(&#x27;1fr 1fr &#x27;)  //行列数量一起确定后，只能显示行乘列的数量（6）,多的数据会被丢弃
-    .columnsGap(10)          // 列与列的间距
-    .rowsGap(10)           // 行与行的间距
-    // .height(300)
-    // .width(&#x27;100%&#x27;)
+    .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&#x27;1fr 2fr 1fr&#x27;</span>)
+    .<span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-string">&#x27;1fr 1fr &#x27;</span>)  <span class="hljs-comment">//行列数量一起确定后，只能显示行乘列的数量（6）,多的数据会被丢弃</span>
+    .<span class="hljs-title function_">columnsGap</span>(<span class="hljs-number">10</span>)          <span class="hljs-comment">// 列与列的间距</span>
+    .<span class="hljs-title function_">rowsGap</span>(<span class="hljs-number">10</span>)           <span class="hljs-comment">// 行与行的间距</span>
+    <span class="hljs-comment">// .height(300)</span>
+    <span class="hljs-comment">// .width(&#x27;100%&#x27;)</span>
   &#125;
 &#125;</code></pre></div>
 
@@ -397,60 +397,60 @@ struct Index &#123;
 </tbody></table>
 <p><img src="/posts/5275/3.2-1.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/posts/5275/3.2-2.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;">》》》<img src="/posts/5275/3.2-3.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
-<div class="code-wrapper"><pre><code class="hljs dart"><span class="hljs-meta">@Entry</span>
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
 <span class="hljs-meta">@Component</span>
-struct Page10_Grid_Merge &#123;
+struct <span class="hljs-title class_">Page10</span>_Grid_Merge &#123;
   <span class="hljs-comment">// 快速生成 12 个元素的数组</span>
   <span class="hljs-comment">// Array.from 是 Array 这个类上面的静态方法</span>
   <span class="hljs-comment">// &#123;length:12&#125; 是一个对象，有 length 属性，值为 12</span>
-  nums: number[] = Array.from(&#123; length: <span class="hljs-number">12</span> &#125;)
+  <span class="hljs-attr">nums</span>: <span class="hljs-built_in">number</span>[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">12</span> &#125;)
 
-  build() &#123;
-    Column() &#123;
-      Text(<span class="hljs-string">&#x27;合并行列&#x27;</span>)
-        .fontSize(<span class="hljs-number">20</span>)
-        .fontWeight(<span class="hljs-number">900</span>)
-        .padding(<span class="hljs-number">10</span>)
-      Grid() &#123;
-        ForEach(<span class="hljs-keyword">this</span>.nums, (item: number, index: number) =&gt; &#123;
+  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-title class_">Column</span>() &#123;
+      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;合并行列&#x27;</span>)
+        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)
+        .<span class="hljs-title function_">fontWeight</span>(<span class="hljs-number">900</span>)
+        .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)
+      <span class="hljs-title class_">Grid</span>() &#123;
+        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nums</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;
           <span class="hljs-keyword">if</span> (index === <span class="hljs-number">2</span>) &#123;
-            GridItem() &#123;
-              Text(index + <span class="hljs-string">&#x27;&#x27;</span>)
-                .fontColor(Color.White)
-                .fontSize(<span class="hljs-number">30</span>)
+            <span class="hljs-title class_">GridItem</span>() &#123;
+              <span class="hljs-title class_">Text</span>(index + <span class="hljs-string">&#x27;&#x27;</span>)
+                .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
+                .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
             &#125;
-            .backgroundColor(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
-            .columnStart(<span class="hljs-number">2</span>)
-            .columnEnd(<span class="hljs-number">3</span>)
+            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
+            .<span class="hljs-title function_">columnStart</span>(<span class="hljs-number">2</span>)
+            .<span class="hljs-title function_">columnEnd</span>(<span class="hljs-number">3</span>)
           &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (index === <span class="hljs-number">3</span>) &#123;
-            GridItem() &#123;
-              Text(index + <span class="hljs-string">&#x27;&#x27;</span>)
-                .fontColor(Color.White)
-                .fontSize(<span class="hljs-number">30</span>)
+            <span class="hljs-title class_">GridItem</span>() &#123;
+              <span class="hljs-title class_">Text</span>(index + <span class="hljs-string">&#x27;&#x27;</span>)
+                .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
+                .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
             &#125;
-            .backgroundColor(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
-            .rowStart(<span class="hljs-number">1</span>)
-            .rowEnd(<span class="hljs-number">2</span>)
+            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
+            .<span class="hljs-title function_">rowStart</span>(<span class="hljs-number">1</span>)
+            .<span class="hljs-title function_">rowEnd</span>(<span class="hljs-number">2</span>)
           &#125; <span class="hljs-keyword">else</span> &#123;
-            GridItem() &#123;
-              Text(index + <span class="hljs-string">&#x27;&#x27;</span>)
-                .fontColor(Color.White)
-                .fontSize(<span class="hljs-number">30</span>)
+            <span class="hljs-title class_">GridItem</span>() &#123;
+              <span class="hljs-title class_">Text</span>(index + <span class="hljs-string">&#x27;&#x27;</span>)
+                .<span class="hljs-title function_">fontColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)
+                .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
             &#125;
-            .backgroundColor(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
+            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#9dc3e6&#x27;</span>)
           &#125;
         &#125;)
       &#125;
-      .columnsTemplate(<span class="hljs-string">&#x27;1fr 1fr 1fr 1fr&#x27;</span>)
-      .rowsTemplate(<span class="hljs-string">&#x27;1fr 1fr 1fr&#x27;</span>)
-      .width(<span class="hljs-string">&#x27;100%&#x27;</span>)
-      .height(<span class="hljs-number">260</span>)
-      .rowsGap(<span class="hljs-number">10</span>)
-      .columnsGap(<span class="hljs-number">10</span>)
-      .padding(<span class="hljs-number">10</span>)
+      .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&#x27;1fr 1fr 1fr 1fr&#x27;</span>)
+      .<span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-string">&#x27;1fr 1fr 1fr&#x27;</span>)
+      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
+      .<span class="hljs-title function_">height</span>(<span class="hljs-number">260</span>)
+      .<span class="hljs-title function_">rowsGap</span>(<span class="hljs-number">10</span>)
+      .<span class="hljs-title function_">columnsGap</span>(<span class="hljs-number">10</span>)
+      .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)
     &#125;
-    .width(<span class="hljs-string">&#x27;100%&#x27;</span>)
-    .height(<span class="hljs-string">&#x27;100%&#x27;</span>)
+    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
+    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
   &#125;
 &#125;</code></pre></div>
 
@@ -462,10 +462,10 @@ struct Page10_Grid_Merge &#123;
 <div class="code-wrapper"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> rowsTemplate  或者columnTemplate 只写一个
 <span class="hljs-bullet">2.</span> 让子组件的高度或者宽度之和, 超过父组件Grid</code></pre></div>
 
-<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 💥1. rowsTemplate  或者columnTemplate 只写一个</span>
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 💥1. rowsTemplate  或者columnTemplate 只写一个</span>
 <span class="hljs-comment">// 💥2. 让子组件的高度或者宽度之和, 超过父组件Grid</span>
 
-@<span class="hljs-title class_">Extend</span>(<span class="hljs-title class_">Text</span>)
+<span class="hljs-meta">@Extend</span>(<span class="hljs-title class_">Text</span>)
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">xxx</span>(<span class="hljs-params"></span>) &#123;
   .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
   .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">30</span>)
@@ -473,16 +473,16 @@ struct Page10_Grid_Merge &#123;
   .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)
 &#125;
 
-@<span class="hljs-title class_">Entry</span>
-@<span class="hljs-title class_">Component</span>
+<span class="hljs-meta">@Entry</span>
+<span class="hljs-meta">@Component</span>
 struct <span class="hljs-title class_">Page11</span>_Grid_Scroll &#123;
-  <span class="hljs-attr">list</span>: string[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">30</span> &#125;)
+  <span class="hljs-attr">list</span>: <span class="hljs-built_in">string</span>[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">30</span> &#125;)
 
   <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;
     <span class="hljs-title class_">Column</span>() &#123;
       <span class="hljs-comment">// 横向滚动 只写rowsTemplate</span>
       <span class="hljs-title class_">Grid</span>() &#123;
-        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params">item: string, index</span>) =&gt;</span> &#123;
+        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>, index</span>) =&gt;</span> &#123;
           <span class="hljs-title class_">GridItem</span>() &#123;
             <span class="hljs-title class_">Text</span>((index + <span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>())
               .<span class="hljs-title function_">xxx</span>()
@@ -497,7 +497,7 @@ struct <span class="hljs-title class_">Page11</span>_Grid_Scroll &#123;
 
       <span class="hljs-comment">// 竖向滚动 只写columnsTemplate</span>
       <span class="hljs-title class_">Grid</span>() &#123;
-        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params">item: string, index</span>) =&gt;</span> &#123;
+        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>, index</span>) =&gt;</span> &#123;
           <span class="hljs-title class_">GridItem</span>() &#123;
             <span class="hljs-title class_">Text</span>((index + <span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>())
               .<span class="hljs-title function_">xxx</span>()
@@ -535,10 +535,10 @@ struct <span class="hljs-title class_">Page11</span>_Grid_Scroll &#123;
 &#125;)
 </code></pre></div>
 
-<div class="code-wrapper"><pre><code class="hljs js">@<span class="hljs-title class_">Entry</span>
-@<span class="hljs-title class_">Component</span>
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
+<span class="hljs-meta">@Component</span>
 struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
-  <span class="hljs-attr">nums</span>: number[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">200</span> &#125;)
+  <span class="hljs-attr">nums</span>: <span class="hljs-built_in">number</span>[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">200</span> &#125;)
   <span class="hljs-comment">// 控制器对象，不是状态属性，不需要添加任何修饰符</span>
   <span class="hljs-attr">scroller</span>: <span class="hljs-title class_">Scroller</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scroller</span>()
 
@@ -549,7 +549,7 @@ struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
         .<span class="hljs-title function_">fontWeight</span>(<span class="hljs-number">900</span>)
         .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)
       <span class="hljs-title class_">Grid</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>) &#123;
-        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nums</span>, <span class="hljs-function">(<span class="hljs-params">item: number, index: number</span>) =&gt;</span> &#123;
+        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nums</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;
           <span class="hljs-title class_">GridItem</span>() &#123;
             <span class="hljs-title class_">Text</span>(index + <span class="hljs-number">1</span> + <span class="hljs-string">&#x27;&#x27;</span>)
           &#125;
@@ -637,7 +637,7 @@ struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
 <td>滚动条状态。 默认值：BarState.Auto</td>
 </tr>
 </tbody></table>
-<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 创建控制器对象</span>
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 创建控制器对象</span>
 <span class="hljs-attr">scroller</span>: <span class="hljs-title class_">Scroller</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scroller</span>()
 
 <span class="hljs-comment">// 设置给 Grid 组件</span>
@@ -657,11 +657,11 @@ struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
 &#125;
 <span class="hljs-comment">// 设置外观</span></code></pre></div>
 
-<div class="code-wrapper"><pre><code class="hljs js">@<span class="hljs-title class_">Entry</span>
-@<span class="hljs-title class_">Component</span>
+<div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
+<span class="hljs-meta">@Component</span>
 struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
   <span class="hljs-comment">// 长度为 30 每一项都为 undefined 的数组</span>
-  <span class="hljs-attr">list</span>: string[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">30</span> &#125;)
+  <span class="hljs-attr">list</span>: <span class="hljs-built_in">string</span>[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(&#123; <span class="hljs-attr">length</span>: <span class="hljs-number">30</span> &#125;)
   <span class="hljs-comment">// 创建控制器对象==================</span>
   <span class="hljs-attr">scroller</span>: <span class="hljs-title class_">Scroller</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scroller</span>()
 
@@ -673,7 +673,7 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
         .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)
       <span class="hljs-comment">// 设置控制器对象给 Grid================</span>
       <span class="hljs-title class_">Grid</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>) &#123;
-        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params">item: string, index</span>) =&gt;</span> &#123;
+        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>, index</span>) =&gt;</span> &#123;
           <span class="hljs-title class_">GridItem</span>() &#123;
             <span class="hljs-variable language_">this</span>.<span class="hljs-title class_">ItemBuilder</span>(index)
           &#125;
@@ -709,8 +709,8 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
     .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
   &#125;
 
-  @<span class="hljs-title class_">Builder</span>
-  <span class="hljs-title class_">ItemBuilder</span>(<span class="hljs-attr">index</span>: number) &#123;
+  <span class="hljs-meta">@Builder</span>
+  <span class="hljs-title class_">ItemBuilder</span>(<span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>) &#123;
     <span class="hljs-title class_">Text</span>((index + <span class="hljs-number">1</span>).<span class="hljs-title function_">toString</span>())
       .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#0094ff&#x27;</span>)
       .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
@@ -817,6 +817,12 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/53747.html" title="HM-二维码生成、保存、扫码">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HM-二维码生成、保存、扫码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
