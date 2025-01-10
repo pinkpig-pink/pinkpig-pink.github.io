@@ -21,16 +21,16 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="二维码生成、保存、扫码业务需求和目标：点击按钮–&gt;生成二维码–&gt;点击保存–&gt;实现二维码保存到相册–&gt;实现二维码扫码 前置知识点： QRCode  – &gt; 二维码生成组件 componentSnapshot   –&gt;  componentSnapshot.getSync   –&gt;  组件截图模块 ImagePacker  –&gt; image.create">
+    <meta name="description" content="二维码生成、保存、扫码业务需求和目标：点击按钮–&gt;生成二维码–&gt;点击保存–&gt;实现二维码保存到相册–&gt;实现二维码扫码 前置知识点： QRCode – &gt; 二维码生成组件 componentSnapshot –&gt;  componentSnapshot.getSync  –&gt; 组件截图模块 ImagePacker –&gt; image.createImageP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HM-二维码生成、保存、扫码">
 <meta property="og:url" content="http://example.com/posts/53747.html">
 <meta property="og:site_name" content="Pinkpig">
-<meta property="og:description" content="二维码生成、保存、扫码业务需求和目标：点击按钮–&gt;生成二维码–&gt;点击保存–&gt;实现二维码保存到相册–&gt;实现二维码扫码 前置知识点： QRCode  – &gt; 二维码生成组件 componentSnapshot   –&gt;  componentSnapshot.getSync   –&gt;  组件截图模块 ImagePacker  –&gt; image.create">
+<meta property="og:description" content="二维码生成、保存、扫码业务需求和目标：点击按钮–&gt;生成二维码–&gt;点击保存–&gt;实现二维码保存到相册–&gt;实现二维码扫码 前置知识点： QRCode – &gt; 二维码生成组件 componentSnapshot –&gt;  componentSnapshot.getSync  –&gt; 组件截图模块 ImagePacker –&gt; image.createImageP">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/posts/53747/1-1.jpeg">
-<meta property="article:published_time" content="2024-10-28T12:04:35.000Z">
-<meta property="article:modified_time" content="2024-12-25T08:23:22.888Z">
+<meta property="article:published_time" content="2024-07-17T12:04:35.000Z">
+<meta property="article:modified_time" content="2025-01-10T08:01:04.634Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-28 20:04" pubdate>
-          2024年10月28日 晚上
+        <time datetime="2024-07-17 20:04" pubdate>
+          2024年7月17日 晚上
         </time>
       </span>
     
@@ -294,14 +294,14 @@
                 
                 <h1 id="二维码生成、保存、扫码"><a href="#二维码生成、保存、扫码" class="headerlink" title="二维码生成、保存、扫码"></a>二维码生成、保存、扫码</h1><h3 id="业务需求和目标："><a href="#业务需求和目标：" class="headerlink" title="业务需求和目标："></a>业务需求和目标：</h3><p>点击按钮–&gt;生成二维码–&gt;点击保存–&gt;实现二维码保存到相册–&gt;实现二维码扫码</p>
 <h3 id="前置知识点："><a href="#前置知识点：" class="headerlink" title="前置知识点："></a>前置知识点：</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/ts-basic-components-qrcode-V5">QRCode</a>  – &gt; 二维码生成组件</li>
-<li>componentSnapshot   –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-arkui-componentsnapshot-V5#componentsnapshotgetsync12"> componentSnapshot.getSync </a>  –&gt;  组件截图模块</li>
-<li>ImagePacker  –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-image-V5#imagecreateimagepacker">image.createImagePacker </a>  –&gt;  图片打包器</li>
-<li>fileIo  –&gt;  <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-fileio-V5#fileioopensync">fileIo.openSync</a>  |  fileIo.writeSync  |   fileIo.closeSync    –&gt;  文件管理模块</li>
-<li>fileUri  –&gt;  <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-file-fileuri-V5#fileurigeturifrompath">fileUri.getUriFromPath</a>   –&gt;  文件URI 模块</li>
-<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-photoaccesshelper-V5#photoaccesshelpergetphotoaccesshelper">photoAccessHelper</a>  –&gt;  .getPhotoAccessHelper  |  .MediaAssetChangeRequest  |.applyChanges   –&gt; 相册管理模块</li>
-<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-syscap-V5#caniuse">canIUse</a> –&gt;  系统能力 </li>
-<li>scanBarcode  –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/scan-scanbarcode-api-V5#section829511911349">scanBarcode.startScanForResult</a>  –&gt;默认扫码模块</li>
+<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/ts-basic-components-qrcode-V5">QRCode</a> – &gt; 二维码生成组件</li>
+<li>componentSnapshot –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-arkui-componentsnapshot-V5#componentsnapshotgetsync12"> componentSnapshot.getSync </a> –&gt; 组件截图模块</li>
+<li>ImagePacker –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-image-V5#imagecreateimagepacker">image.createImagePacker </a> –&gt; 图片打包器</li>
+<li>fileIo –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-fileio-V5#fileioopensync">fileIo.openSync</a> | fileIo.writeSync | fileIo.closeSync –&gt; 文件管理模块</li>
+<li>fileUri –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-file-fileuri-V5#fileurigeturifrompath">fileUri.getUriFromPath</a> –&gt; 文件 URI 模块</li>
+<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-photoaccesshelper-V5#photoaccesshelpergetphotoaccesshelper">photoAccessHelper</a> –&gt; .getPhotoAccessHelper | .MediaAssetChangeRequest |.applyChanges –&gt; 相册管理模块</li>
+<li><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-syscap-V5#caniuse">canIUse</a> –&gt; 系统能力</li>
+<li>scanBarcode –&gt; <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/scan-scanbarcode-api-V5#section829511911349">scanBarcode.startScanForResult</a> –&gt;默认扫码模块</li>
 </ol>
 <h3 id="业务实现流程"><a href="#业务实现流程" class="headerlink" title="业务实现流程"></a>业务实现流程</h3><p><img src="/posts/53747/1-1.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 掌握：二维码组件</span>
@@ -404,7 +404,6 @@ struct <span class="hljs-title class_">TestPage</span> &#123;
   &#125;
 &#125;</code></pre></div>
 
-
                 
               </div>
             
@@ -469,7 +468,7 @@ struct <span class="hljs-title class_">TestPage</span> &#123;
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月28日</div>
+          <div>2024年7月17日</div>
         </div>
       
       
@@ -501,18 +500,12 @@ struct <span class="hljs-title class_">TestPage</span> &#123;
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/30845.html" title="HM-文件上传">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HM-文件上传</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/5275.html" title="Grid">
-                        <span class="hidden-mobile">Grid</span>
+                      <a href="/posts/20117.html" title="HM-权限申请">
+                        <span class="hidden-mobile">HM-权限申请</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

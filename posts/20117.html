@@ -32,8 +32,8 @@
 <meta property="og:image" content="http://example.com/posts/20117/1-2.png">
 <meta property="og:image" content="http://example.com/posts/20117/1-3.png">
 <meta property="og:image" content="http://example.com/posts/20117/1-4.gif">
-<meta property="article:published_time" content="2024-10-28T12:32:00.000Z">
-<meta property="article:modified_time" content="2024-10-28T12:42:02.066Z">
+<meta property="article:published_time" content="2024-07-13T12:32:00.000Z">
+<meta property="article:modified_time" content="2025-01-10T08:01:03.266Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-28 20:32" pubdate>
-          2024年10月28日 晚上
+        <time datetime="2024-07-13 20:32" pubdate>
+          2024年7月13日 晚上
         </time>
       </span>
     
@@ -306,8 +306,8 @@
 </ol>
 <div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-comment">// 权限申明</span>
 <span class="hljs-attr">&quot;requestPermissions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
-  <span class="hljs-comment">// 网络请求--系统权限  </span>
-  <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ohos.permission.INTERNET&quot;</span> <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>  
+  <span class="hljs-comment">// 网络请求--系统权限</span>
+  <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ohos.permission.INTERNET&quot;</span> <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-comment">// 麦克风权限 -- 用户权限</span>
   <span class="hljs-punctuation">&#123;</span>
     <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ohos.permission.MICROPHONE&quot;</span><span class="hljs-punctuation">,</span>
@@ -319,7 +319,7 @@
 <ol start="2">
 <li>在<code>string</code>文件中写<code>reason_microphone</code></li>
 </ol>
-<p><strong>注意：鸿蒙开发中，有三个string文件位置 base 、en_US 、zh_CN ,至少配两个，base是必须配的，</strong></p>
+<p><strong>注意：鸿蒙开发中，有三个 string 文件位置 base 、en_US 、zh_CN ,至少配两个，base 是必须配的，</strong></p>
 <p><strong>以中文模式为例，需要配置 zh_CN 和 base</strong></p>
 <div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-comment">// 里面还有其他的string值，这里只以reason_microphone为例</span>
 &#123;
@@ -354,7 +354,7 @@
 <ol start="4">
 <li>二次授权有多种模式，首推第一种</li>
 </ol>
-<p><strong>第一种：app内唤起设置中心</strong></p>
+<p><strong>第一种：app 内唤起设置中心</strong></p>
 <p><strong>使用</strong><code>requestPermissionOnSetting</code><strong>和首次申请授权</strong><code>requestPermissionsFromUser</code><strong>的使用方法一样</strong></p>
 <div class="code-wrapper"><pre><code class="hljs TS"><span class="hljs-comment">// 弹窗返回选择结果，和button位置对应</span>
 <span class="hljs-comment">// &#x27;离开&#x27;-- 0   &#x27;去授权&#x27;--1</span>
@@ -370,7 +370,7 @@
   &#125;</code></pre></div>
 
 <p><img src="/posts/20117/1-3.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<p><strong>第二种方法：跳转到设置中心的应用管理     参考文档</strong> <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-inner-application-uiabilitycontext-V5#uiabilitycontextstartability">startAbility</a></p>
+<p><strong>第二种方法：跳转到设置中心的应用管理 参考文档</strong> <a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-inner-application-uiabilitycontext-V5#uiabilitycontextstartability">startAbility</a></p>
 <p><strong>该方法也适用于其他应用唤起或跳转</strong></p>
 <div class="code-wrapper"><pre><code class="hljs TS"><span class="hljs-keyword">if</span> (showSelect.<span class="hljs-property">index</span>) &#123;     <span class="hljs-comment">// showSelect是上面showDialog弹窗返回的用户选择结果</span>
   <span class="hljs-keyword">let</span> <span class="hljs-attr">want</span>: <span class="hljs-title class_">Want</span> = &#123;
@@ -434,11 +434,11 @@
     &#125;
   &#125;</code></pre></div>
 
-<h2 id="封装成Permission类"><a href="#封装成Permission类" class="headerlink" title="封装成Permission类"></a>封装成Permission类</h2><p>权限申请类：</p>
+<h2 id="封装成-Permission-类"><a href="#封装成-Permission-类" class="headerlink" title="封装成 Permission 类"></a>封装成 Permission 类</h2><p>权限申请类：</p>
 <p><strong>getPermission 方法：</strong></p>
-<p>参数： permission: Permissions[ ]      返回  isAgree : boolean   </p>
-<p> <strong>openPermissionSetting 方法：</strong>  </p>
-<p>参数： permission: Permissions[ ]      返回  isAgree : boolean   </p>
+<p>参数： permission: Permissions[ ] 返回 isAgree : boolean</p>
+<p><strong>openPermissionSetting 方法：</strong></p>
+<p>参数： permission: Permissions[ ] 返回 isAgree : boolean</p>
 <p><strong>注意：</strong> <code>**requestPermissionOnSetting**</code><strong>比较特殊，其需要同组权限数组才能被唤起，不同组的多个权限数组无法唤起</strong></p>
 <p><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/app-permission-group-list-V5">应用权限组列表</a></p>
 <div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-keyword">import</span> &#123; abilityAccessCtrl, <span class="hljs-title class_">Permissions</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@kit.AbilityKit&quot;</span>
@@ -495,7 +495,6 @@
    router.<span class="hljs-title function_">back</span>()
    <span class="hljs-keyword">return</span>
  &#125;</code></pre></div>
-
 
                 
               </div>
@@ -561,7 +560,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月28日</div>
+          <div>2024年7月13日</div>
         </div>
       
       
@@ -593,9 +592,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/25246.html" title="Git">
+                      <a href="/posts/53747.html" title="HM-二维码生成、保存、扫码">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git</span>
+                        <span class="hidden-mobile">HM-二维码生成、保存、扫码</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

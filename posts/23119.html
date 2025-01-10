@@ -21,15 +21,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.  基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​	a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​	b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容    &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（">
+    <meta name="description" content="1. 基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​ a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​ b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容   &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（内容">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swiper">
 <meta property="og:url" content="http://example.com/posts/23119.html">
 <meta property="og:site_name" content="Pinkpig">
-<meta property="og:description" content="1.  基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​	a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​	b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容    &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（">
+<meta property="og:description" content="1. 基本用法 首先来看看如何设置轮播内容，以及设置尺寸   轮播内容：内容作为Swiper的子组件即可 尺寸：  ​ a. 设置 Swiper 的尺寸：内容会拉伸为和 Swiper 一致（优先级高） ​ b. 没有设置Swiper的尺寸，Swiper被子组件的尺寸撑开 Swiper() &#123;   &#x2F;&#x2F; 轮播内容   &#x2F;&#x2F; (设置尺寸，撑开swiper) &#125; &#x2F;&#x2F; 设置尺寸（内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-01T12:06:29.000Z">
-<meta property="article:modified_time" content="2024-10-28T12:16:35.193Z">
+<meta property="article:published_time" content="2024-06-20T12:06:29.000Z">
+<meta property="article:modified_time" content="2025-01-10T07:59:06.917Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-01 20:06" pubdate>
-          2024年9月1日 晚上
+        <time datetime="2024-06-20 20:06" pubdate>
+          2024年6月20日 晚上
         </time>
       </span>
     
@@ -290,24 +290,24 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1.  基本用法"></a>1.  基本用法</h2><blockquote>
+                <h2 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h2><blockquote>
 <p>首先来看看如何设置轮播内容，以及设置尺寸</p>
 </blockquote>
 <ol>
 <li>轮播内容：内容作为<code>Swiper</code>的子组件即可</li>
 <li>尺寸：</li>
 </ol>
-<p>​	a. 设置 <code>Swiper</code> 的尺寸：内容会拉伸为和 <code>Swiper</code> 一致（<strong>优先级高</strong>）</p>
-<p>​	b. 没有设置<code>Swiper</code>的尺寸，<code>Swiper</code>被子组件的尺寸撑开</p>
+<p>​ a. 设置 <code>Swiper</code> 的尺寸：内容会拉伸为和 <code>Swiper</code> 一致（<strong>优先级高</strong>）</p>
+<p>​ b. 没有设置<code>Swiper</code>的尺寸，<code>Swiper</code>被子组件的尺寸撑开</p>
 <div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-title class_">Swiper</span>() &#123;
-  <span class="hljs-comment">// 轮播内容 </span>
+  <span class="hljs-comment">// 轮播内容</span>
   <span class="hljs-comment">// (设置尺寸，撑开swiper)</span>
 &#125;
 <span class="hljs-comment">// 设置尺寸（内容拉伸、优先级高）</span>
 .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)
 .<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)</code></pre></div>
 
-<h2 id="2-常用属性方法"><a href="#2-常用属性方法" class="headerlink" title="2.  常用属性方法"></a>2.  常用属性方法</h2><table>
+<h2 id="2-常用属性方法"><a href="#2-常用属性方法" class="headerlink" title="2. 常用属性方法"></a>2. 常用属性方法</h2><table>
 <thead>
 <tr>
 <th><strong>参数名</strong></th>
@@ -318,7 +318,7 @@
 <tbody><tr>
 <td>autoPlay</td>
 <td align="left">boolean</td>
-<td align="left">子组件是否自动播放。默认值：false<strong>说明：</strong>loop为false时，自动轮播到最后一页时停止轮播。手势切换后不是最后一页时继续播放。</td>
+<td align="left">子组件是否自动播放。默认值：false<strong>说明：</strong>loop 为 false 时，自动轮播到最后一页时停止轮播。手势切换后不是最后一页时继续播放。</td>
 </tr>
 <tr>
 <td>interval</td>
@@ -333,7 +333,7 @@
 <tr>
 <td>loop👎</td>
 <td align="left">boolean</td>
-<td align="left">是否开启无限循环播放。设置为true时表示无限循环播放，设置为false时表示只播放一次。默认值：true</td>
+<td align="left">是否开启无限循环播放。设置为 true 时表示无限循环播放，设置为 false 时表示只播放一次。默认值：true</td>
 </tr>
 </tbody></table>
 <div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
@@ -380,22 +380,22 @@ struct <span class="hljs-title class_">Index</span> &#123;
 <tbody><tr>
 <td>left</td>
 <td>Length</td>
-<td>设置导航点距离Swiper组件左边的距离。默认值：0单位：vp</td>
+<td>设置导航点距离 Swiper 组件左边的距离。默认值：0 单位：vp</td>
 </tr>
 <tr>
 <td>top</td>
 <td>Length</td>
-<td>设置导航点距离Swiper组件顶部的距离。默认值：0单位：vp</td>
+<td>设置导航点距离 Swiper 组件顶部的距离。默认值：0 单位：vp</td>
 </tr>
 <tr>
 <td>right</td>
 <td>Length</td>
-<td>设置导航点距离Swiper组件右边的距离。默认值：0单位：vp</td>
+<td>设置导航点距离 Swiper 组件右边的距离。默认值：0 单位：vp</td>
 </tr>
 <tr>
 <td>bottom</td>
 <td>Length</td>
-<td>设置导航点距离Swiper组件底部的距离。默认值：0单位：vp</td>
+<td>设置导航点距离 Swiper 组件底部的距离。默认值：0 单位：vp</td>
 </tr>
 </tbody></table>
 <p><strong>样式属性：</strong></p>
@@ -410,32 +410,32 @@ struct <span class="hljs-title class_">Index</span> &#123;
 <tbody><tr>
 <td>itemWidth</td>
 <td>Length</td>
-<td>设置Swiper组件圆点导航指示器的宽，不支持设置百分比。默认值：6单位：vp</td>
+<td>设置 Swiper 组件圆点导航指示器的宽，不支持设置百分比。默认值：6 单位：vp</td>
 </tr>
 <tr>
 <td>itemHeightLength</td>
 <td>Length</td>
-<td>设置Swiper组件圆点导航指示器的高，不支持设置百分比。默认值：6单位：vp</td>
+<td>设置 Swiper 组件圆点导航指示器的高，不支持设置百分比。默认值：6 单位：vp</td>
 </tr>
 <tr>
 <td>selectedItemWidth</td>
 <td>Length</td>
-<td>设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。默认值：12单位：vp</td>
+<td>设置选中 Swiper 组件圆点导航指示器的宽，不支持设置百分比。默认值：12 单位：vp</td>
 </tr>
 <tr>
 <td>selectedItemHeight</td>
 <td>Length</td>
-<td>设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。默认值：6单位：vp</td>
+<td>设置选中 Swiper 组件圆点导航指示器的高，不支持设置百分比。默认值：6 单位：vp</td>
 </tr>
 <tr>
 <td>color</td>
 <td><a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-types-0000001774121374#ZH-CN_TOPIC_0000001774121374__resourcecolor">ResourceColor</a></td>
-<td>设置Swiper组件圆点导航指示器的颜色。默认值：’#182431’（10%透明度）</td>
+<td>设置 Swiper 组件圆点导航指示器的颜色。默认值：’#182431’（10%透明度）</td>
 </tr>
 <tr>
 <td>selectedColor</td>
 <td>ResourceColor</td>
-<td>设置选中Swiper组件圆点导航指示器的颜色。默认值：’#007DFF’</td>
+<td>设置选中 Swiper 组件圆点导航指示器的颜色。默认值：’#007DFF’</td>
 </tr>
 </tbody></table>
 <div class="code-wrapper"><pre><code class="hljs Ts"><span class="hljs-meta">@Entry</span>
@@ -543,7 +543,7 @@ struct <span class="hljs-title class_">Index</span> &#123;
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月1日</div>
+          <div>2024年6月20日</div>
         </div>
       
       
@@ -585,8 +585,8 @@ struct <span class="hljs-title class_">Index</span> &#123;
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/271.html" title="Hexo基础配置">
-                        <span class="hidden-mobile">Hexo基础配置</span>
+                      <a href="/posts/25246.html" title="Git">
+                        <span class="hidden-mobile">Git</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

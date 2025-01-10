@@ -33,8 +33,8 @@
 <meta property="og:image" content="http://example.com/posts/5275/3.2-1.png">
 <meta property="og:image" content="http://example.com/posts/5275/3.2-2.png">
 <meta property="og:image" content="http://example.com/posts/5275/3.2-3.png">
-<meta property="article:published_time" content="2024-09-02T08:47:36.000Z">
-<meta property="article:modified_time" content="2024-10-28T12:17:18.176Z">
+<meta property="article:published_time" content="2024-06-22T08:47:36.000Z">
+<meta property="article:modified_time" content="2025-01-10T07:56:36.695Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HarmonyOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,8 +231,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-02 16:47" pubdate>
-          2024年9月2日 下午
+        <time datetime="2024-06-22 16:47" pubdate>
+          2024年6月22日 下午
         </time>
       </span>
     
@@ -308,11 +308,11 @@
   <span class="hljs-title class_">GridItem</span>()&#123;
     <span class="hljs-comment">// 展示的内容放在这里</span>
   &#125;
-&#125;      
+&#125;
 .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&#x27;。。。&#x27;</span>)
 .<span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-string">&#x27;。。。。&#x27;</span>)</code></pre></div>
 
-<p>  <img src="/posts/5275/3.1-1.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">      <img src="/posts/5275/3.1-2.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<p><img src="/posts/5275/3.1-1.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"> <img src="/posts/5275/3.1-2.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
 <table>
 <thead>
 <tr>
@@ -324,12 +324,12 @@
 <tbody><tr>
 <td>columnsTemplate</td>
 <td>string</td>
-<td>设置当前网格布局列的数量或最小列宽值，不设置时默认1列。例如, ‘1fr 1fr 2fr’ 是将父组件分3列，将父组件允许的宽分为4等份，第一列占1份，第二列占1份，第三列占2份。</td>
+<td>设置当前网格布局列的数量或最小列宽值，不设置时默认 1 列。例如, ‘1fr 1fr 2fr’ 是将父组件分 3 列，将父组件允许的宽分为 4 等份，第一列占 1 份，第二列占 1 份，第三列占 2 份。</td>
 </tr>
 <tr>
 <td>rowsTemplate</td>
 <td>string</td>
-<td>设置当前网格布局行的数量或最小行高值，不设置时默认1行。例如, ‘1fr 1fr 2fr’是将父组件分三行，将父组件允许的高分为4等份，第一行占1份，第二行占一份，第三行占2份。</td>
+<td>设置当前网格布局行的数量或最小行高值，不设置时默认 1 行。例如, ‘1fr 1fr 2fr’是将父组件分三行，将父组件允许的高分为 4 等份，第一行占 1 份，第二行占一份，第三行占 2 份。</td>
 </tr>
 <tr>
 <td>columnsGap</td>
@@ -365,7 +365,7 @@ struct <span class="hljs-title class_">Index</span> &#123;
   &#125;
 &#125;</code></pre></div>
 
-<h2 id="2-合并行列"><a href="#2-合并行列" class="headerlink" title="2. 合并行列"></a>2. 合并行列</h2><p><strong>行列号从0下标开始</strong></p>
+<h2 id="2-合并行列"><a href="#2-合并行列" class="headerlink" title="2. 合并行列"></a>2. 合并行列</h2><p><strong>行列号从 0 下标开始</strong></p>
 <table>
 <thead>
 <tr>
@@ -456,8 +456,8 @@ struct <span class="hljs-title class_">Page10</span>_Grid_Merge &#123;
 
 <h2 id="3-设置滚动"><a href="#3-设置滚动" class="headerlink" title="3. 设置滚动"></a>3. 设置滚动</h2><p><strong>设置方式:</strong></p>
 <ol>
-<li><strong>水平滚动</strong>：设置的是rowsTemplate，Grid的滚动方向为水平方向。</li>
-<li><strong>垂直滚动</strong>：设置的是columnsTemplate，Grid的滚动方向为垂直方向</li>
+<li><strong>水平滚动</strong>：设置的是 rowsTemplate，Grid 的滚动方向为水平方向。</li>
+<li><strong>垂直滚动</strong>：设置的是 columnsTemplate，Grid 的滚动方向为垂直方向</li>
 </ol>
 <div class="code-wrapper"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> rowsTemplate  或者columnTemplate 只写一个
 <span class="hljs-bullet">2.</span> 让子组件的高度或者宽度之和, 超过父组件Grid</code></pre></div>
@@ -518,7 +518,7 @@ struct <span class="hljs-title class_">Page11</span>_Grid_Scroll &#123;
 <h2 id="4-控制器对象-控制滚动"><a href="#4-控制器对象-控制滚动" class="headerlink" title="4. 控制器对象-控制滚动"></a>4. 控制器对象-控制滚动</h2><ol>
 <li>创建 Scroller 对象（控制器对象）</li>
 <li>控制器对象设置给 Grid</li>
-<li>单独调用 Scroller 对象的  scrollPage 方法</li>
+<li>单独调用 Scroller 对象的 scrollPage 方法</li>
 </ol>
 <div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 1.创建 Scroller 对象（new 关键字，调用Scroller函数，返回一个Scroller的对象）</span>
 <span class="hljs-attr">scroller</span>: <span class="hljs-title class_">Scroller</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scroller</span>()
@@ -587,9 +587,9 @@ struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
 <ol>
 <li><p>隐藏默认滚动条</p>
 </li>
-<li><p>使用ScrollBar组件自定义滚动条</p>
-<p>​	a. ScrollBar 和 Grid 设置同一个 Scroller（控制器对象）</p>
-<p>​	b. 单独使用<strong>ScrollBar</strong>组件通过 参数 和 属性自定义滚动条</p>
+<li><p>使用 ScrollBar 组件自定义滚动条</p>
+<p>​ a. ScrollBar 和 Grid 设置同一个 Scroller（控制器对象）</p>
+<p>​ b. 单独使用<strong>ScrollBar</strong>组件通过 参数 和 属性自定义滚动条</p>
 </li>
 </ol>
 </blockquote>
@@ -605,7 +605,7 @@ struct <span class="hljs-title class_">Page13</span>_Grid_Scroller &#123;
 <tbody><tr>
 <td>scrollBar</td>
 <td>BarState</td>
-<td>设置滚动条状态。默认值： BarState.auto  <br>BarState.off 关闭<br>BarState.on 常驻<br>BarState.auto 按需显示</td>
+<td>设置滚动条状态。默认值： BarState.auto <br>BarState.off 关闭<br>BarState.on 常驻<br>BarState.auto 按需显示</td>
 </tr>
 </tbody></table>
 <p><strong>第二步</strong>：单独使用<strong>ScrollBar</strong>组件自定义滚动条，ScrollBar 和 Grid 设置同一个 Scroller（控制器对象）</p>
@@ -721,7 +721,6 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
   &#125;
 &#125;</code></pre></div>
 
-
                 
               </div>
             
@@ -786,7 +785,7 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月2日</div>
+          <div>2024年6月22日</div>
         </div>
       
       
@@ -818,9 +817,9 @@ struct <span class="hljs-title class_">Page14</span>_Grid_ScrollBar &#123;
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/53747.html" title="HM-二维码生成、保存、扫码">
+                      <a href="/posts/30845.html" title="HM-文件上传">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HM-二维码生成、保存、扫码</span>
+                        <span class="hidden-mobile">HM-文件上传</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
