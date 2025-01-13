@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="说一说MVVM、MVC 和 MVP 模式的区别是什么?MVVM、MVC 和 MVP 是三种常见的软件架构模式，它们在前端开发中都有广泛的应用。下面是它们之间的主要区别：  MVC（Model-View-Controller）： 模型（Model）：负责处理应用程序的数据和业务逻辑。 视图（View）：负责展示数据给用户，通常是用户界面。 控制器（Controller）：接收用户的输入，并将其转换为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue面试八股文一">
+<meta property="og:url" content="http://example.com/posts/14099.html">
+<meta property="og:site_name" content="Pinkpig">
+<meta property="og:description" content="说一说MVVM、MVC 和 MVP 模式的区别是什么?MVVM、MVC 和 MVP 是三种常见的软件架构模式，它们在前端开发中都有广泛的应用。下面是它们之间的主要区别：  MVC（Model-View-Controller）： 模型（Model）：负责处理应用程序的数据和业务逻辑。 视图（View）：负责展示数据给用户，通常是用户界面。 控制器（Controller）：接收用户的输入，并将其转换为">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-11T12:56:05.000Z">
+<meta property="article:modified_time" content="2025-01-13T03:03:20.536Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Vue面试八股文一 - Pinkpig</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PinkpigのBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/Futari%20Dake%20No%20Hanabi.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue面试八股文一"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-11 20:56" pubdate>
+          2023年9月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue面试八股文一</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="说一说MVVM、MVC-和-MVP-模式的区别是什么"><a href="#说一说MVVM、MVC-和-MVP-模式的区别是什么" class="headerlink" title="说一说MVVM、MVC 和 MVP 模式的区别是什么?"></a>说一说MVVM、MVC 和 MVP 模式的区别是什么?</h2><p>MVVM、MVC 和 MVP 是三种常见的软件架构模式，它们在前端开发中都有广泛的应用。下面是它们之间的主要区别：</p>
+<ol>
+<li><strong>MVC（Model-View-Controller）</strong>：<ul>
+<li><strong>模型（Model）</strong>：负责处理应用程序的数据和业务逻辑。</li>
+<li><strong>视图（View）</strong>：负责展示数据给用户，通常是用户界面。</li>
+<li><strong>控制器（Controller）</strong>：接收用户的输入，并将其转换为对模型的操作，然后更新视图。</li>
+<li>在 MVC 模式中，视图和模型之间是通过控制器进行通信的，控制器起到了桥梁的作用。</li>
+</ul>
+</li>
+<li><strong>MVP（Model-View-Presenter）</strong>：<ul>
+<li><strong>模型（Model）</strong>：与 MVC 中的模型相同，负责处理数据和业务逻辑。</li>
+<li><strong>视图（View）</strong>：负责展示数据给用户，与 MVC 中的视图类似。</li>
+<li><strong>presenter（Presenter）</strong>：负责协调模型和视图之间的交互，将用户的输入转换为对模型的操作，并将模型的更新反映到视图上。</li>
+<li>在 MVP 模式中，视图和模型之间没有直接的通信，它们通过 presenter 进行交互。</li>
+</ul>
+</li>
+<li><strong>MVVM（Model-View-ViewModel）</strong>：<ul>
+<li><strong>模型（Model）</strong>：与 MVC 和 MVP 中的模型相同，负责处理数据和业务逻辑。</li>
+<li><strong>视图（View）</strong>：负责展示数据给用户，与 MVC 和 MVP 中的视图类似。</li>
+<li><strong>视图模型（ViewModel）</strong>：是 MVVM 模式的核心，它是一个数据绑定的抽象层，负责将模型的数据转换为视图可以理解的格式，并将视图的用户输入转换为对模型的操作。</li>
+<li>在 MVVM 模式中，视图和模型之间通过数据绑定进行通信，视图模型起到了数据转换和协调的作用。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结：</strong></p>
+<ul>
+<li>VC更适用于传统的服务器渲染应用。</li>
+<li>MVP适用于Web应用和桌面应用，但逻辑较为复杂。</li>
+<li>MVVM 非常适合前端框架如Vue、React、Angular，能够更好地处理UI 绑定和状态管理。</li>
+</ul>
+<p><strong>扩展：</strong></p>
+<ol>
+<li>MVC：最早提出的设计模式之一，广泛应用于Web开发，如传统的JavaEE、ASP.NET应用中。典型的例子是使用SpringMVC框架进行Java Web开发，View层通常使用JSP或Thymeleaf。</li>
+<li>MVP：在Android 开发中使用较多。在 Android 中，由于 Activity 和Fragment 既承担了逻辑又负责了 UI 渲染，使用 MVP 模式可<br>以通过Presenter来分离这些责任，使得代码更易维护和测试。</li>
+<li>MVVM：<strong>不仅在Vue中使用，而且在其他现代前端框架如Angular和React</strong>（虽然更偏向于Flux&#x2F;Redux架构）中也有类似的实现。<br>MVVM使得开发者可以专注于业务逻辑和数据流，框架会处理具体的DOM操作和视图更新。Vue提供了简洁的双向数据绑定，Angular则使用了复杂的依赖注入和数据绑定，而 React 虽然采用单向数据流，但通过 Hooks、Context API 也能实现类似 MVVM 的效果。</li>
+</ol>
+<h2 id="vue-router的几种模式有什么区别？"><a href="#vue-router的几种模式有什么区别？" class="headerlink" title="vue-router的几种模式有什么区别？"></a>vue-router的几种模式有什么区别？</h2><p>vue-router一共有三种模式，分别是hash模式、history模式和abstract模式，其中，vue默认的路由模式是hash模式。<br>它们的区别在于：</p>
+<ul>
+<li><p>hash模式：</p>
+<p>在 <code>hash</code> 模式下，<code>vue-router</code> 使用 URL 的哈希部分（即 <code>#</code> 后面的部分）来表示路由，当浏览器的 URL 发生变化时，<code>hashchange</code> 事件会被触发，<code>vue-router</code> 可以通过监听这个事件来更新页面的内容。</p>
+<p><strong>优点</strong>：是兼容性好，所有浏览器都支持；缺点是 URL 中会出现 <code>#</code> 符号，不太美观。</p>
+</li>
+<li><p>history模式：</p>
+<p>在 <code>history</code> 模式下，<code>vue-router</code> 使用浏览器的历史记录 API 来管理路由。它通过 <code>pushState</code> 和 <code>replaceState</code> 方法来改变 URL，并监听 <code>popstate</code> 事件来更新页面的内容。</p>
+<p><strong>优点</strong>：是 URL 更加美观，没有 <code>#</code> 符号；缺点是兼容性不如 <code>hash</code> 模式，需要服务器端进行相应的配置，以处理路由的跳转。</p>
+</li>
+<li><p>abstract模式：</p>
+<p>abstract模式一般用于nodejs服务端或者老旧浏览器（IE8、9)。在这种模式下，vue-router会放弃URL，改用JavaScript变量来维护路由队列。</p>
+</li>
+</ul>
+<h2 id="什么是-Vue-指令-Vue-有哪些常用的指令"><a href="#什么是-Vue-指令-Vue-有哪些常用的指令" class="headerlink" title="什么是 Vue 指令?  Vue 有哪些常用的指令?"></a>什么是 Vue 指令?  Vue 有哪些常用的指令?</h2><ol>
+<li><strong>v-bind</strong>：用于绑定 HTML 元素的属性，例如 <code>v-bind:src</code> 可以绑定图片的 <code>src</code> 属性。<strong>简写 &#x3D;&#x3D;&gt;  ：</strong></li>
+<li><strong>v-on</strong>：用于绑定事件处理程序，例如 <code>v-on:click</code> 可以绑定点击事件。<strong>简写 &#x3D;&#x3D;&gt;   @</strong></li>
+<li><strong>v-model</strong>：用于在表单元素中实现双向数据绑定，例如 <code>v-model</code> 可以绑定输入框的值。 </li>
+<li><strong>v-if</strong>：用于根据条件控制元素的显示和隐藏，例如 <code>v-if=&quot;condition&quot;</code> 可以根据条件显示或隐藏元素。</li>
+<li><strong>v-else</strong>：与 <code>v-if</code> 一起使用，用于在条件不成立时显示另一个元素。</li>
+<li><strong>v-for</strong>：用于循环渲染列表，例如 <code>v-for=&quot;item in items&quot;</code> 可以循环渲染一个列表。</li>
+<li><strong>v-show</strong>：用于根据条件控制元素的显示和隐藏，与 <code>v-if</code> 不同的是，<code>v-show</code> 只是通过 CSS 的 <code>display</code> 属性来控制元素的显示和隐藏，而不是真正地删除或添加元素。</li>
+<li><strong>v-html</strong>：用于渲染 HTML 内容，例如 <code>v-html=&quot;htmlContent&quot;</code> 可以渲染一段 HTML 内容。</li>
+<li><strong>v-text</strong>：用于渲染文本内容，例如 <code>v-text=&quot;textContent&quot;</code> 可以渲染一段文本内容。</li>
+<li><strong>v-pre</strong>：用于跳过元素的编译过程，例如 <code>v-pre</code> 可以跳过一个元素的编译过程，直接显示原始的 HTML 内容。</li>
+</ol>
+<h2 id="vue实例挂载的过程中发生了什么"><a href="#vue实例挂载的过程中发生了什么" class="headerlink" title="vue实例挂载的过程中发生了什么?"></a>vue实例挂载的过程中发生了什么?</h2><ol>
+<li><strong>创建 Vue 实例</strong>：首先，通过 <code>new Vue()</code> 创建一个 Vue 实例。在创建实例时，可以传入一个选项对象，用于配置 Vue 实例的各种属性和方法。</li>
+<li><strong>初始化数据</strong>：Vue 实例会对传入的选项对象进行处理，包括初始化数据、计算属性、方法、生命周期钩子等。</li>
+<li><strong>编译模板</strong>：如果 Vue 实例有模板选项，那么会对模板进行编译，将模板转换为渲染函数。</li>
+<li><strong>创建render函数</strong> ：无论是编译模板还是用户提供了render函数，Vue都需要一个render函数来生成虚拟DOM。</li>
+<li><strong>触发beforeMount钩子</strong> ：在挂载开始之前，相关的 <code>beforeMount</code>生命周期钩子将被调用。</li>
+<li><strong>虚拟DOM的创建与渲染</strong>：Vue通过render函数生成虚拟DOM，并调用渲染器将虚拟DOM渲染为真实DOM。</li>
+<li><strong>DOM替换或插入</strong> ：生成的真实DOM将替换挂载元素，或者插入到挂载元素中。</li>
+<li><strong>触发mounted钩子</strong> ：一旦完成DOM插入，<code>mounted</code>生命周期钩子将被调用，表明挂载过程结束。</li>
+</ol>
+<p>整个挂载过程是Vue实例从开始创建到最终渲染完成的过程，它作为Vue的生命周期的一个部分，确保了组件按照既定的方式被正确编译和渲染到页面上。</p>
+<h2 id="说说你对Vue生命周期的理解"><a href="#说说你对Vue生命周期的理解" class="headerlink" title="说说你对Vue生命周期的理解"></a>说说你对Vue生命周期的理解</h2><ol>
+<li><strong>创建阶段</strong>：在这个阶段，Vue 会创建一个空的实例，并初始化一些数据和方法。这个阶段的钩子函数有 <code>beforeCreate</code> 和 <code>created</code>。</li>
+<li><strong>挂载阶段</strong>：在这个阶段，Vue 会将实例挂载到 DOM 元素上，并渲染视图。这个阶段的钩子函数有 <code>beforeMount</code> 和 <code>mounted</code>。</li>
+<li><strong>更新阶段</strong>：在这个阶段，当数据发生变化时，Vue 会更新视图。这个阶段的钩子函数有 <code>beforeUpdate</code> 和 <code>updated</code>。</li>
+<li><strong>销毁阶段</strong>：在这个阶段，Vue 会销毁实例，并释放相关的资源。这个阶段的钩子函数有 <code>beforeDestroy</code> 和 <code>destroyed</code>。</li>
+</ol>
+<p>Vue 还提供了一些其他的钩子函数，例如 <code>activated</code> 和 <code>deactivated</code>，用于在组件被激活或停用的时候执行一些操作。</p>
+<h2 id="Vue3中watch和watchEffect有什么区别"><a href="#Vue3中watch和watchEffect有什么区别" class="headerlink" title="Vue3中watch和watchEffect有什么区别"></a>Vue3中watch和watchEffect有什么区别</h2><p>Vue 中，<code>watch</code> 和 <code>watchEffect</code> 是用来观察和响应 Vue 实例上数据变化的两种不同方式，它们有以下区别：</p>
+<ol>
+<li><strong>定义方式</strong> ：<ul>
+<li><code>watch</code> 需要显式地指定一个或多个要观察的数据源，并且对其变化做出响应。</li>
+<li><code>watchEffect</code> 不需要指定观察的数据源。它会自动追踪执行过程中所有响应性依赖，并在其中任何依赖变更时重新运行。</li>
+</ul>
+</li>
+<li><strong>使用方式</strong> ：<ul>
+<li><code>watch</code> 要求传入要观测的数据源，以及一个回调函数，当观测的数据发生变化时，回调函数就会被执行。</li>
+<li><code>watchEffect</code> 只需要一个函数作为参数，该函数内部使用到的所有响应式状态都会被追踪。</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：<ul>
+<li><code>watch</code> 的回调函数可以返回一个函数，用于在监听结束时执行一些清理操作</li>
+<li><code>watchEffect</code> 的回调函数不能返回任何值。</li>
+</ul>
+</li>
+</ol>
+<p>总之，<code>watch</code> 提供了更多的控制能力，适合于需要更细粒度反应变化的场景，而 <code>watchEffect</code> 则适合于不需要精确控制或响应多个数据源变化的场景。</p>
+<h2 id="vue中为什么data属性是一个函数而不是一个对象？"><a href="#vue中为什么data属性是一个函数而不是一个对象？" class="headerlink" title="vue中为什么data属性是一个函数而不是一个对象？"></a>vue中为什么data属性是一个函数而不是一个对象？</h2><p>因为在Vue组件中，每个组件实例都应该维护一份被返回对象的独立的拷贝，作为自己的状态。如果data是一个对象，则意味着所有的组件实例将共享同一个data对象，那么一个组件实例对data对象的修改，将影响到所有组件实例。</p>
+<p>通过使用一个函数返回数据对象的方式，Vue在初始化组件实例时会调用data函数，从而保证每一个组件实例都可以获取到一份独立的数据副本，这样组件之间的数据就不会相互影响了。</p>
+<p>所以，在Vue组件中定义data时要用一个函数来返回一个初始数据对象，这是Vue设计的一部分，以确保组件数据的独立性和可复用性。</p>
+<h2 id="Object-defineProperty和Proxy-的区别在哪里呢？"><a href="#Object-defineProperty和Proxy-的区别在哪里呢？" class="headerlink" title="Object.defineProperty和Proxy 的区别在哪里呢？"></a>Object.defineProperty和Proxy 的区别在哪里呢？</h2><p><code>object.defineProperty</code> 和 <code>Proxy</code> 都是 JavaScript 中的特性，它们提供了不同的方式来拦截和定义对象的行为。以下是两者的主要区别：</p>
+<ol>
+<li><strong>拦截能力</strong> :<ul>
+<li><code>Object.defineProperty</code> 只能拦截对属性的访问和设置操作，不能拦截其他操作，例如属性的删除、对象属性的遍历等。</li>
+<li><code>Proxy</code> 能拦截多达 13 种不同的对象操作，包括属性的读取、设置、枚举、删除等，以及更多高级操作，如有对象原型的变更、函数调用等。</li>
+</ul>
+</li>
+<li><strong>使用方式</strong> :<ul>
+<li><code>Object.defineProperty</code> 需要直接在一个已有的对象上操作定义属性。</li>
+<li><code>Proxy</code> 在目标对象外部创建一个新的代理对象，不直接操作原始对象，而是通过这个代理对象来管理对原始对象的所有访问。</li>
+</ul>
+</li>
+<li><strong>性能</strong> :<ul>
+<li>对于 Vue.js 的使用情境而言，<code>Object.defineProperty</code> 对于大量属性的对象可能会有性能问题，因为需要递归遍历对象的每个属性。</li>
+<li><code>Proxy</code> 可以更高效地处理嵌套对象和数组等情况，因为只有当访问到某个属性时，才会对该属性做代理处理。</li>
+</ul>
+</li>
+<li><strong>灵活性和动态性</strong> :<ul>
+<li><code>Object.defineProperty</code> 不能监测到属性的添加和删除，一旦定义了 getter 和 setter，就无法添加新的响应式属性，除非再次调用 <code>Object.defineProperty</code>。</li>
+<li><code>Proxy</code> 可以轻松地监测到对象结构的任何变化，包括属性的添加和删除。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Vue中的-nextTick有什么作用？"><a href="#Vue中的-nextTick有什么作用？" class="headerlink" title="Vue中的$nextTick有什么作用？"></a>Vue中的$nextTick有什么作用？</h2><p><code>$nextTick</code> 是 Vue.js 中的一个全局 API，它的作用是在下次 DOM 更新循环结束之后执行延迟回调。在 Vue.js 中，数据的更新是异步的，当你修改了数据后，DOM 不会立即更新，而是会在下一次事件循环中进行更新。如果你需要在 DOM 更新后执行一些操作，就可以使用 <code>$nextTick</code> 方法。</p>
+<p><code>$nextTick</code> 方法接受一个回调函数作为参数，这个回调函数会在 DOM 更新后执行。</p>
+<p><strong>简而言之：</strong>因为Vue 采用的是异步更新 DOM 的机制，统一在一个异步任务中去批量更新 DOM，$nextTick会在数据和视图都更新完毕时触发内部的回调函数</p>
+<p><strong>$nextTick的实现原理</strong>：</p>
+<p>Vue 利用了JS中的事件循环机制来实现 <code>$nextTick</code>，<code>$nextTick</code> 会使用 <code>setTimeout</code> + <code>Promise.then()</code> 来把回调函数添加到微任务队列里, 确保在数据变化引发的 DOM 更新操作后，再去执行 <code>$nextTick</code> 里的回调函数</p>
+<h2 id="说说你对keep-alive的理解是什么？"><a href="#说说你对keep-alive的理解是什么？" class="headerlink" title="说说你对keep-alive的理解是什么？"></a>说说你对keep-alive的理解是什么？</h2><p><code>keep-alive</code> 是 Vue.js 中的一个内置组件，它可以在组件切换时缓存组件的状态，避免组件被重新创建和销毁，从而提高性能和用户体验。</p>
+<ol>
+<li><strong>组件状态保持</strong> ：<code>keep-alive</code>包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。这样，用户切换回缓存的组件时，组件状态将会保留，如滚动位置、用户输入等。</li>
+<li><strong>性能优化</strong> ：当组件在频繁渲染的情景下（例如切换标签页），使用 <code>keep-alive</code>可以避免重新创建组件实例，节省性能开销。</li>
+<li><strong>生命周期钩子</strong> ：<code>keep-alive</code>会影响内部组件的生命周期钩子。被缓存的组件不会再触发 <code>destroyed</code>钩子，而是会触发 <code>deactivated</code>钩子；当组件再次激活时，会触发 <code>activated</code>钩子。</li>
+<li><strong>包含与排除</strong> ：<code>keep-alive</code>提供 <code>include</code>和 <code>exclude</code>属性，允许组件根据组件名被缓存或不被缓存。这提供了更细致的控制，可以缓存某些组件，而让其他组件每次都重新渲染。</li>
+<li><strong>最大缓存数</strong> ：通过设置 <code>max</code>属性，可以指定 <code>keep-alive</code>能够缓存的最大组件实例数目。超过这个数目时，最久未访问的组件缓存将会被丢弃。</li>
+<li><strong>典型应用场景</strong> ：<code>keep-alive</code>常见于如标签页切换、路由切换中不需要每次都重新加载的场景，例如一个复杂的列表页，如果没有 <code>keep-alive</code>，每次切换回来时都需要重新发送请求获取数据并渲染。</li>
+</ol>
+<h2 id="你知道vue中key的原理吗？说说你对它的理解"><a href="#你知道vue中key的原理吗？说说你对它的理解" class="headerlink" title="你知道vue中key的原理吗？说说你对它的理解"></a>你知道vue中key的原理吗？说说你对它的理解</h2><p>在 Vue 中，<code>key</code> 是一个特殊的属性，它用于在虚拟 DOM Diff 算法中优化列表渲染的性能。<code>key</code> 的原理是给每个列表项一个唯一的标识，以便 Vue 能够准确地识别哪些列表项需要更新，哪些需要删除，哪些需要添加。</p>
+<p>当 Vue 渲染一个列表时，它会根据 <code>key</code> 的值来判断列表项是否发生了变化。如果 <code>key</code> 的值没有变化，Vue 会认为列表项没有发生变化，从而复用之前的 DOM 元素，而不是重新创建一个新的 DOM 元素。这样可以避免不必要的 DOM 操作，提高渲染性能。</p>
+<p>如果 <code>key</code> 的值发生了变化，Vue 会认为列表项发生了变化，从而重新创建一个新的 DOM 元素，并将其插入到正确的位置。这样可以确保列表项的顺序和位置是正确的。</p>
+<p>需要注意的是，<code>key</code> 的值必须是唯一的，否则 Vue 无法准确地识别列表项的变化。通常情况下，我们可以使用列表项的 ID 或者其他唯一的标识作为 <code>key</code> 的值。</p>
+<h2 id="Vue常用的修饰符有哪些？有什么应用场景-？"><a href="#Vue常用的修饰符有哪些？有什么应用场景-？" class="headerlink" title="Vue常用的修饰符有哪些？有什么应用场景 ？"></a>Vue常用的修饰符有哪些？有什么应用场景 ？</h2><p>在 Vue 中，修饰符是一种特殊的指令后缀，用于对指令进行一些特殊的处理。Vue 常用的修饰符有以下几种：</p>
+<ol>
+<li><p><strong>事件修饰符</strong>：事件修饰符用于对事件进行一些特殊的处理，例如阻止事件冒泡、阻止默认行为、按键修饰符等。</p>
+<p>​	<code>.prevent</code> - <strong>阻止默认事件修饰符</strong></p>
+<p>​	<code>.stop</code> - <strong>阻止事件冒泡修饰符</strong></p>
+<p>​	<code>.capture</code> - <strong>事件捕获模式修饰符</strong></p>
+<p>​	<code>.once</code> - <strong>单次事件修饰符</strong></p>
+<p>​	<code>.native</code>  <strong>-原生修饰符</strong>，用来监听组件根元素的原生事件的。(vue3中已移除)</p>
+</li>
+<li><p><strong>表单修饰符</strong>：表单修饰符用于对表单元素进行一些特殊的处理，</p>
+<p>​	 <code>.lazy</code> 修饰符可以将 <code>input</code> 事件转换为 <code>change</code> 事件</p>
+<p>​	<code>.number</code>  <strong>-数转修饰符</strong> 可以将输入的值转换为数字类型     <code>v-model.number=&quot;&#39;5&#39;&quot;</code></p>
+<p>​	<code>.trim</code> - <strong>去空修饰符</strong>可以去除输入值的首尾空格</p>
+</li>
+<li><p><strong>模型修饰符</strong>：模型修饰符用于对 <code>v-model</code> 指令进行一些特殊的处理，例如 <code>.sync</code> 修饰符可以实现父子组件之间的双向数据绑定。</p>
+</li>
+<li><p><strong>按键修饰符</strong>：按键修饰符用于对键盘事件进行一些特殊的处理，例如 <code>.enter</code> 修饰符可以监听回车键的按下。</p>
+</li>
+</ol>
+<p>这些修饰符可以在不同的应用场景中使用，例如：</p>
+<ol>
+<li>阻止事件冒泡：当你在一个父元素中绑定了一个事件，同时在子元素中也绑定了一个相同的事件，如果你不希望子元素的事件冒泡到父元素中，可以使用 <code>.stop</code> 修饰符。</li>
+<li>阻止默认行为：当你在一个链接或者表单中绑定了一个事件，如果你不希望链接或者表单的默认行为发生，可以使用 <code>.prevent</code> 修饰符。</li>
+<li>按键修饰符：当你需要监听键盘事件时，可以使用按键修饰符来指定需要监听的按键，例如 <code>.enter</code> 修饰符可以监听回车键的按下。</li>
+<li>表单修饰符：当你需要对表单元素进行一些特殊的处理时，可以使用表单修饰符，例如 <code>.lazy</code> 修饰符可以将 <code>input</code> 事件转换为 <code>change</code> 事件，<code>.number</code> 修饰符可以将输入的值转换为数字类型，<code>.trim</code> 修饰符可以去除输入值的首尾空格。</li>
+<li>模型修饰符：当你需要实现父子组件之间的双向数据绑定时，可以使用 <code>.sync</code> 修饰符。</li>
+</ol>
+<h2 id="请说一说浏览器的同源策略和如何解决跨域？"><a href="#请说一说浏览器的同源策略和如何解决跨域？" class="headerlink" title="请说一说浏览器的同源策略和如何解决跨域？"></a>请说一说浏览器的同源策略和如何解决跨域？</h2><p>浏览器的同源策略是一种安全机制。同源策略要求协议、域名和端口号都必须相同，否则就是跨域。请求能发出去, 服务器也能把数据响应回来, 但是浏览器会阻止数据给回页面</p>
+<p><strong>解决跨域</strong>:</p>
+<ol>
+<li><p><strong>CORS(跨域资源共享)</strong>:</p>
+<ul>
+<li>CORS 需要服务器端进行配置，请求服务器可以在服务器端设置响应头Access-Control-Allow-Origin，允许特定的域名或者任意域名访问。</li>
+</ul>
+</li>
+<li><p><strong>代理服务器</strong>💥💥</p>
+<ul>
+<li>页面中请求先发给代理服务器, 代理服务器再把请求转发给接口服务器, 因为服务器与服务器之间没有跨域问题, 接口服务器能把响应的数据给到代理服务器, 因为代理服务器和项目运行的本地服务器是同源的, 所以浏览器不会触发同源保护</li>
+<li><strong>开发环境中使用代理</strong>：在Vue项目中，常使用vue.config.js配置文件中的devServer.proxy选项来设置代理。</li>
+<li><strong>生产环境中nginx配置反向代理</strong>：在生产环境中，可以在nginx服务器上配置反向代理来实现跨域。</li>
+</ul>
+</li>
+<li><p><strong>JSONP（只支持GET请求）:</strong></p>
+<ul>
+<li>主要利用<code>&lt;script&gt;</code>标签没有跨域限制的特性，通过动态创建<code>&lt;script&gt;</code>来发送带有回调函数的GET请求。需要后端配合输出JSONP格式的响应。</li>
+</ul>
+</li>
+</ol>
+<p><strong>项目上线：</strong></p>
+<ol>
+<li>如果项目上线, 可以把网站项目和接口服务器部署在同一个源，就不存在跨域问题</li>
+<li>如果项目上线， 网站和接口服务器不在一个源，<ul>
+<li>配置服务器端 CORS（跨域资源共享）</li>
+<li>使用反向代理服务器（如 Nginx）</li>
+</ul>
+</li>
+</ol>
+<p><strong>在vue项目中如何通过代理服务器解决跨域?</strong></p>
+<p>在Vue项目中，常使用vue.config.js配置文件中的devServer.proxy选项来设置代理。<br>通过这种方式，开发服务器会在后台将请求转发至指定的服务器地址，从而绕过浏览器的同源策略。</p>
+<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; defineConfig &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@vue/cli-service&#x27;</span>)
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">defineConfig</span>(&#123;
+  <span class="hljs-attr">transpileDependencies</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">devServer</span>: &#123;
+     <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;
+        <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://example.com&#x27;</span>, <span class="hljs-comment">// 这里替换成实际要跨域请求的目标服务器地址</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">// 重写路径，将请求路径中的&#x27;/api&#x27;去掉，这样实际请求的就是目标服务器对应的真实路径</span>
+        &#125;,
+       	  <span class="hljs-string">&#x27;/abc&#x27;</span>: &#123;
+          	<span class="hljs-comment">// ... </span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+&#125;)</code></pre></div>
+
+<p>在用axios发请求时, 就不需要配置基地址, 如果所有的接口请求中有相同字段, 比如: &#x2F;api, 代理服务就可以用&#x2F;api去匹配接口, 走代理服务器转发。</p>
+<h2 id="说一说vue中组件之间如何通信"><a href="#说一说vue中组件之间如何通信" class="headerlink" title="说一说vue中组件之间如何通信?"></a>说一说vue中组件之间如何通信?</h2><p>vue中组件的通信: 父子组件通信 &#x2F; 兄弟组件通信 &#x2F;  跨组件通信</p>
+<ol>
+<li><p><strong>父子组件通信(</strong> <strong>props和$emit</strong> <strong>)</strong></p>
+<ul>
+<li><p>父传子</p>
+<ul>
+<li><p>父组件中通过 <code>v-bind</code> 指令将数据绑定到子组件的属性上</p>
+</li>
+<li><p>子组件中通过在 <code>props</code> 选项中定义属性来接收从父组件传来的数据</p>
+</li>
+<li><p>在props选项中定义的属性可以做类型, 非空, 可选, 自定义类型校验</p>
+</li>
+</ul>
+</li>
+<li><p>子传父</p>
+<ul>
+<li><p>子组件通过 <code>$emit</code> 方法触发自定义事件，并将数据作为参数传递给父组件</p>
+</li>
+<li><p>在父组件中通过 <code>v-on</code> 指令监听子组件触发的事件，并在事件处理函数中获取子组件传递的数据</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>兄弟组件通信</strong></p>
+<ul>
+<li><strong>使用事件总线（Event Bus）</strong>：创建一个新的 Vue 实例作为事件总线，各个组件可以通过在这个事件总线上 <code>$on</code> 监听事件以及 <code>$emit</code> 触发事件来实现相互之间的数据传递，相当于一个全局的事件中心。</li>
+<li>注意点: vue3中不能直接用, 一般用 <code>mitt</code> 库</li>
+</ul>
+</li>
+<li><p><strong>跨层级组件通信</strong></p>
+<ul>
+<li><strong>通过 <code>provide</code> 和 <code>inject</code>：</strong>祖先组件通过 <code>provide</code> 选项提供数据或方法，后代组件（无论层级多深）可以通过 <code>inject</code> 选项来注入并使用祖先组件提供的内容，这样就跨越了中间的组件层级实现了通信</li>
+<li>注意点: vue2中传递数据如果需要时响应式的则需要传递 <strong>对象 或 数组</strong>, vue3则使用<strong>ref函数</strong>或<strong>reactive函数</strong>即可</li>
+</ul>
+</li>
+<li><p><strong>使用 Vuex 或 Pinia（状态管理库）</strong></p>
+</li>
+</ol>
+<h2 id="Vue中的过滤器了解吗？过滤器的应用场景有哪些？-vue3已废弃"><a href="#Vue中的过滤器了解吗？过滤器的应用场景有哪些？-vue3已废弃" class="headerlink" title="Vue中的过滤器了解吗？过滤器的应用场景有哪些？(vue3已废弃)"></a>Vue中的过滤器了解吗？过滤器的应用场景有哪些？(vue3已废弃)</h2><p>在Vue中，过滤器（Filters）是一些可以用在模板表达式中的特殊函数，主要用于文本格式化。它们可以用在双花括号插值和v-bind表达式中，过滤器应该被添加在JavaScript表达式的尾部，由“管道”符号表示。</p>
+<p>过滤器可以在模板中使用 <code>|</code> 符号来调用，例如：</p>
+<div class="code-wrapper"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-comment">&lt;!-- 定义局部过滤器  --&gt;</span></span>
+<span class="language-xml">filters: &#123;</span>
+<span class="language-xml">  formatDate(value) &#123;</span>
+<span class="language-xml">    if (!value) return &#x27;&#x27;;</span>
+<span class="language-xml">    // 这里使用了moment.js库来格式化时间</span>
+<span class="language-xml">    return moment(value).format(&#x27;YYYY-MM-DD HH:mm:ss&#x27;);</span>
+<span class="language-xml">  &#125;</span>
+<span class="language-xml">&#125;</span>
+<span class="language-xml"></span>
+<span class="language-xml"><span class="hljs-comment">&lt;!-- 定义全局过滤器 --&gt;</span></span>
+<span class="language-xml">Vue.filter(&#x27;formatDate&#x27;, function (value) &#123;</span>
+<span class="language-xml">  if (!value) return &#x27;&#x27;;</span>
+<span class="language-xml">   return moment(value).format(&#x27;YYYY-MM-DD HH:mm:ss&#x27;);</span>
+<span class="language-xml">&#125;);</span>
+<span class="language-xml"></span>
+<span class="language-xml">//然后在模板中，我们可以这样使用这个过滤器：</span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">timestamp</span> | formatDate &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+<span class="language-xml">// 在这个示例中，管道符 | 起到的作用是指明后面跟随的是一个过滤器。</span>
+<span class="language-xml">// 在Vue中，管道符用于将数据传递给过滤器函数，并将其作为第一个参数。</span>
+<span class="language-xml">// 过滤器函数可以接受额外的参数，如果需要的话，可以在过滤器名之后通过管道符继续传递。</span>
+<span class="language-xml">// timestamp 是要处理的原始数据，管道符 | 告诉Vue接下来将使用名为 formatDate 的过滤器来处理这些数据。</span>
+<span class="language-xml">// formatDate 是定义在组件的 filters 对象中的一个方法，它会接收 timestamp 作为输入参数，处理后返回格式化的日期字符串，这个字符串随后将展示在页面的 <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> 元素之内。</span></code></pre></div>
+
+<p>Vue中过滤器的应用场景包括：</p>
+<ul>
+<li>日期、时间格式化：如上所示，可以将时间戳转换为更可读的日期格式。</li>
+<li>文字截断：创建一个截短文字并添加省略号的过滤器，用于长文本的预览显示。</li>
+<li>货币格式化：将数值转换显示为货币格式，如将1000转换成$1,000.00。</li>
+<li>大小写转换：将文本的字母转换成全大写或全小写。</li>
+<li>自定义文本格式：比如添加前缀、后缀，或者其他自定义文本操作。</li>
+</ul>
+<h2 id="谈谈你对slot的了解"><a href="#谈谈你对slot的了解" class="headerlink" title="谈谈你对slot的了解"></a>谈谈你对slot的了解</h2><p>在 Vue 中，<code>slot</code> 是一种用于在组件中插入内容的机制。它允许我们在父组件中定义一些内容，并将其插入到子组件的指定位置。</p>
+<p><code>slot</code> 可以分为以下几种类型：</p>
+<ol>
+<li><strong>匿名插槽</strong>：匿名插槽是最基本的插槽类型，它没有名称。在子组件中，可以使用 <code>&lt;slot&gt;</code> 元素来定义匿名插槽。在父组件中，可以直接在子组件标签内部插入内容，这些内容将被插入到子组件的匿名插槽中。</li>
+<li><strong>具名插槽</strong>：具名插槽是带有名称的插槽。<ul>
+<li>在子组件中，可以使用 <code>&lt;slot name=&quot;slotName&quot;&gt;</code> 元素来定义具名插槽。</li>
+<li>在父组件中，可以使用 <code>&lt;template v-slot:slotName&gt;</code> 指令来指定要插入到具名插槽中的内容。</li>
+</ul>
+</li>
+<li><strong>作用域插槽</strong>：作用域插槽是一种特殊的插槽类型，它允许子组件向父组件传递数据。<ul>
+<li>在子组件中，可以使用 <code>&lt;slot name=&quot;slotName&quot; :data=&quot;data&quot;&gt;</code> 元素来定义作用域插槽，并通过 <code>:data</code> 属性向父组件传递数据。</li>
+<li>在父组件中，可以使用 <code>&lt;template v-slot:slotName=&quot;slotProps&quot;&gt;</code> 指令来接收子组件传递的数据，并在插槽内容中使用这些数据。</li>
+</ul>
+</li>
+</ol>
+<h2 id="SSR了解吗？SSR解决了什么问题？有做过SSR吗？你是怎么做的？"><a href="#SSR了解吗？SSR解决了什么问题？有做过SSR吗？你是怎么做的？" class="headerlink" title="SSR了解吗？SSR解决了什么问题？有做过SSR吗？你是怎么做的？"></a>SSR了解吗？SSR解决了什么问题？有做过SSR吗？你是怎么做的？</h2><p><strong>SSR（Server-Side Rendering，服务器端渲染）</strong>是一种将应用程序的界面在服务器上进行预先渲染并以 HTML 形式发送到客户端的技术。与传统的客户端渲染（CSR）相比，SSR 在服务器端生成完整的 HTML 页面，然后将其发送到浏览器，以提供更好的性能和搜索引擎优化。</p>
+<p><strong>SSR 的优势包括：</strong></p>
+<ol>
+<li><strong>首屏加载性能提升</strong>：客户端不需要等待所有的JavaScript都加载完毕才能呈现页面，服务器直接发送渲染后的HTML页面，减少了首屏加载时间。</li>
+<li><strong>搜索引擎优化（SEO）</strong>：由于搜索引擎更容易抓取渲染后的HTML页面，SSR可以提升应用的可搜寻性。</li>
+<li><strong>减轻浏览器负担：</strong>由于部分页面渲染在服务器端完成，客户端所需处理的工作相比单页应用（SPA）减少了。</li>
+</ol>
+<p><strong>需要注意的是</strong>，SSR 可能会增加服务器负载和响应时间。因此，在选择是否使用 SSR 时，需要根据项目需求和复杂性来权衡利弊。</p>
+<h2 id="TS和JS的区别"><a href="#TS和JS的区别" class="headerlink" title="TS和JS的区别?"></a>TS和JS的区别?</h2><p>我有使用TypeScript的经验。TypeScript是JavaScript的一个超集，它在JavaScript的基础上增加了一些特有的特性，主要的区别包括：</p>
+<ol>
+<li><p><strong>类型系统：</strong></p>
+<ul>
+<li>TypeScript引入了静态类型检查，可以在编写代码时检查类型错误。这可以大大减少运行时的错误，提升代码的质量和可维护性。</li>
+<li>在JavaScript中，类型是动态的，并且不提供静态类型检查。</li>
+</ul>
+</li>
+<li><p><strong>编译时错误检查：</strong></p>
+<ul>
+<li>由于TypeScript的类型系统，大多数类型错误会在编译阶段被捕捉到，而不是在运行时。这加快了错误的发现和修复速度。</li>
+<li>JavaScript中的错误大多数在运行时发现，这可能导致生产环境中的bug。</li>
+</ul>
+</li>
+<li><p><strong>类型注解和类型推断：</strong></p>
+<ul>
+<li><p>TypeScript允许开发者为变量、函数参数和返回值等指定类型。如果没有指定类型，TypeScript也能够根据代码上下文自动推断出类型。</p>
+</li>
+<li><p>JavaScript不支持类型注解，它是一个纯动态类型语言。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>接口和枚举：</strong></p>
+<ul>
+<li>TypeScript支持接口（Interfaces）和枚举（Enums），这有助于构建更加严谨和可维护的代码结构。</li>
+<li>JavaScript的ES6之前并没有接口的概念，虽然ES6加入了Class，但是并没有Enum。</li>
+</ul>
+</li>
+<li><p><strong>Generics（泛型）：</strong></p>
+<ul>
+<li>TypeScript支持泛型，这允许开发者编写可重用的组件，而这些组件能够支持多种类型的数据。</li>
+<li>JavaScript本身不支持泛型。</li>
+</ul>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue/" class="category-chain-item">Vue</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Vue/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1/" class="category-chain-item">面试八股</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue面试八股文一</div>
+      <div>http://example.com/posts/14099.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/23119.html" title="Swiper">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Swiper</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/25246.html" title="Git">
+                        <span class="hidden-mobile">Git</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
