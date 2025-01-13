@@ -1,0 +1,925 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="关于自定义指令自定义指令是一种在 Vue.js 中扩展 HTML 元素功能的方式。它们可以让你在 Vue.js 应用程序中创建自己的指令，以便在 HTML 元素上添加自定义的行为和功能。 自定义指令中的钩子函数可以让你在不同的阶段对指令进行处理:  bind：在指令绑定到元素上时调用，只调用一次。这个函数可以用来初始化指令的一些状态，例如设置元素的初始样式或属性。 inserted：在元素插入到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue面试八股文二">
+<meta property="og:url" content="http://example.com/posts/21010.html">
+<meta property="og:site_name" content="Pinkpig">
+<meta property="og:description" content="关于自定义指令自定义指令是一种在 Vue.js 中扩展 HTML 元素功能的方式。它们可以让你在 Vue.js 应用程序中创建自己的指令，以便在 HTML 元素上添加自定义的行为和功能。 自定义指令中的钩子函数可以让你在不同的阶段对指令进行处理:  bind：在指令绑定到元素上时调用，只调用一次。这个函数可以用来初始化指令的一些状态，例如设置元素的初始样式或属性。 inserted：在元素插入到">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-13T03:06:50.000Z">
+<meta property="article:modified_time" content="2025-01-13T03:12:59.341Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Vue面试八股文二 - Pinkpig</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PinkpigのBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/Futari%20Dake%20No%20Hanabi.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue面试八股文二"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-13 11:06" pubdate>
+          2023年9月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue面试八股文二</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="关于自定义指令"><a href="#关于自定义指令" class="headerlink" title="关于自定义指令"></a>关于自定义指令</h2><p>自定义指令是一种在 Vue.js 中扩展 HTML 元素功能的方式。它们可以让你在 Vue.js 应用程序中创建自己的指令，以便在 HTML 元素上添加自定义的行为和功能。</p>
+<p>自定义指令中的钩子函数可以让你在不同的阶段对指令进行处理:</p>
+<ol>
+<li><code>bind</code>：在指令绑定到元素上时调用，只调用一次。这个函数可以用来初始化指令的一些状态，例如设置元素的初始样式或属性。</li>
+<li><code>inserted</code>：在元素插入到 DOM 中时调用。这个函数可以用来执行一些与 DOM 相关的操作，例如聚焦到元素上或添加事件监听器。</li>
+<li><code>update</code>：在元素的 VNode 更新时调用，可能会被调用多次。这个函数可以用来根据指令的值更新元素的样式或属性。</li>
+<li><code>componentUpdated</code>：在元素的 VNode 及其子 VNode 全部更新后调用。这个函数可以用来执行一些需要在所有子元素都更新后才能执行的操作。</li>
+<li><code>unbind</code>：在指令从元素上解绑时调用，只调用一次。这个函数可以用来清理指令占用的资源，例如移除事件监听器或清除定时器。</li>
+</ol>
+<div class="code-wrapper"><pre><code class="hljs stylus"><span class="hljs-comment">//在main.js中</span>
+Vue<span class="hljs-selector-class">.directive</span>(<span class="hljs-string">&#x27;xxx&#x27;</span>, &#123;    <span class="hljs-comment">// xxx  是指令名， v-xxx  使用</span>
+  <span class="hljs-built_in">inserted</span>(el,binding) &#123;  <span class="hljs-comment">// inserted  是DOM元素创建时执行的回调函数</span>
+     el<span class="hljs-selector-class">.style</span>.<span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;red&#x27;</span>
+  &#125;,
+  update (el, binding) &#123;  <span class="hljs-comment">// update 是元素更新时执行的回调函数</span>
+      el<span class="hljs-selector-class">.style</span><span class="hljs-selector-class">.color</span> = binding<span class="hljs-selector-class">.value</span>
+  &#125;
+&#125;)</code></pre></div>
+
+<ol>
+<li><code>el</code>：表示绑定了指令的 DOM 元素</li>
+<li><code>binding</code>：一个对象，包含了指令的一些信息，例如指令的名称、值、表达式等</li>
+</ol>
+<h2 id="mockjs-是什么？mockjs-怎样模拟数据？模拟出来的数据是动态还是静态的？"><a href="#mockjs-是什么？mockjs-怎样模拟数据？模拟出来的数据是动态还是静态的？" class="headerlink" title="mockjs 是什么？mockjs 怎样模拟数据？模拟出来的数据是动态还是静态的？"></a>mockjs 是什么？mockjs 怎样模拟数据？模拟出来的数据是动态还是静态的？</h2><p><code>Mock.js</code>是一个用于生成模拟数据的 JavaScript 库。它可以帮助前端开发人员在没有真实数据的情况下，快速生成模拟数据，以便进行开发和测试。</p>
+<p><code>Mock.js</code>提供了一种简单的方式来定义数据模板，然后根据模板生成随机数据。它支持多种数据类型，如字符串、数字、布尔值、日期、数组、对象等，并且可以自定义数据的格式和范围。</p>
+<p>使用<code>Mock.js</code>可以带来以下好处：</p>
+<ol>
+<li><strong>提高开发效率</strong>：在开发过程中，不需要等待后端提供真实数据，可以使用<code>Mock.js</code>生成模拟数据，从而加快开发速度。</li>
+<li><strong>独立开发和测试</strong>：前端开发人员可以独立于后端进行开发和测试，不受后端接口的限制。</li>
+<li><strong>模拟真实数据</strong>：<code>Mock.js</code>可以生成符合真实数据格式和范围的模拟数据，从而更好地模拟真实场景，提高测试的准确性。</li>
+<li><strong>易于使用</strong>：<code>Mock.js</code>提供了简单易懂的 API，使用起来非常方便</li>
+</ol>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 引入Mock.js库</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Mock</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;mockjs&#x27;</span>;
+
+<span class="hljs-comment">// 定义数据模板</span>
+<span class="hljs-keyword">const</span> template = &#123;
+  <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;@cname&#x27;</span>,
+  <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-string">&#x27;@integer(18, 60)&#x27;</span>,
+  <span class="hljs-string">&#x27;email&#x27;</span>: <span class="hljs-string">&#x27;@email&#x27;</span>
+&#125;;
+
+<span class="hljs-comment">// 生成模拟数据</span>
+<span class="hljs-keyword">const</span> data = <span class="hljs-title class_">Mock</span>.<span class="hljs-title function_">mock</span>(template);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);</code></pre></div>
+
+<h2 id="选项式-API-和组合式-API-有何不同？"><a href="#选项式-API-和组合式-API-有何不同？" class="headerlink" title="选项式 API 和组合式 API 有何不同？"></a>选项式 API 和组合式 API 有何不同？</h2><p><strong>在性能方面</strong>，选项式 API 和组合式 API 并没有太大的区别。但是，由于组合式 API 提供了更好的代码组织方式和逻辑复用方式，能够让开发者更加容易地写出高性能的代码。</p>
+<p><strong>代码组织：</strong></p>
+<ol>
+<li><strong>选项式 API</strong> 将组件的逻辑按照不同的功能进行分类，分别放在不同的选项中，比如<code>data</code>、<code>methods</code>、<code>computed</code>、<code>watch</code>等。这种方式的优点是代码结构清晰，易于理解和维护。但是，当组件的逻辑变得复杂时，选项式 API 可能会导致代码变得冗长和难以维护。</li>
+<li><strong>组合式 API</strong> 将组件的逻辑拆分成不同的函数，这些函数可以在组件中自由组合和复用。这种方式的优点是代码更加灵活和可复用，能够更好地适应复杂的业务需求。</li>
+</ol>
+<p><strong>逻辑复用：</strong></p>
+<ol>
+<li><strong>选项式 API</strong> 通过<code>mixin</code>来实现逻辑复用，<code>mixin</code>是一种将多个对象的属性和方法合并到一个对象中的技术。但是，<code>mixin</code>存在一些问题，比如命名冲突、数据来源不清晰等</li>
+<li><strong>组合式 API</strong> 通过函数来实现逻辑复用，开发者可以将相同的逻辑封装成一个函数，然后在不同的组件中复用这个函数。这种方式的优点是逻辑复用更加灵活和可控，能够避免<code>mixin</code>存在的问题</li>
+</ol>
+<h2 id="Vue3-里为什么要用-Proxy-替代-defineProperty？"><a href="#Vue3-里为什么要用-Proxy-替代-defineProperty？" class="headerlink" title="Vue3 里为什么要用 Proxy 替代 defineProperty？"></a>Vue3 里为什么要用 Proxy 替代 defineProperty？</h2><ul>
+<li><p>在 Vue 3.0 中，使用 Proxy API 替代 defineProperty API 是为了改进响应式系统的性能和功能：</p>
+<ol>
+<li><strong>性能提升</strong>：Proxy API 比 defineProperty API 在许多情况下具有更好的性能。defineProperty 使用 Object.defineProperty 方法来拦截对象属性的访问和修改，但它需要遍历每个属性进行拦截。而 Proxy API 允许拦截整个对象，可以更高效地捕获对对象的访问和修改。</li>
+<li><strong>更全面的拦截能力</strong>：Proxy API 提供了更多的拦截方法，比 defineProperty API 更灵活、丰富。它支持拦截目标的各种操作，包括读取、设置、删除、枚举等，甚至还可以拦截函数调用和构造函数实例化。</li>
+<li><strong>更好的数组变化检测</strong>：Vue 3.0 使用 Proxy API 改善了数组的变化检测机制。Proxy 可以直接拦截数组的索引访问和修改，使得对数组的变化更容易被监听到，从而提供了更可靠的响应式行为。</li>
+<li><strong>更易于处理嵌套对象</strong>：Proxy API 能够递归地拦截对象的嵌套属性，而 defineProperty 无法自动递归处理嵌套对象。这使得在 Vue 3.0 中处理嵌套对象更加简单和方便。</li>
+<li><strong>更好的错误提示</strong>：相比于 defineProperty，Proxy API 提供了更好的错误追踪和调试信息。当使用 Proxy API 时，如果访问或修改了一个不存在的属性，会直接抛出错误，从而更容易发现和修复问题。</li>
+</ol>
+<p>使用 Proxy API 取代 defineProperty API 是为了提升性能、增强功能，并提供更好的开发体验和错误提示。这些改进使得 Vue 3.0 的响应式系统更加高效、灵活和可靠。</p>
+</li>
+</ul>
+<h2 id="mixins-混入的理解"><a href="#mixins-混入的理解" class="headerlink" title="mixins 混入的理解"></a>mixins 混入的理解</h2><p>Mixin 是一种在 JavaScript 中实现代码复用的方式，它允许你将多个对象的属性和方法合并到一个新的对象中。</p>
+<p>Mixin 对象可以包含组件的 data、methods、computed、watch 等选项，以及生命周期钩子函数。</p>
+<p>ue3 不主推这种方法 Vue3 主推自定义 hooks 替代 Mixins</p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>变量来源不明确</li>
+<li>多 mixins 可能会造成命名冲突</li>
+<li>mixins 和组件出现多对多的关系，使项目复杂度变高</li>
+</ul>
+<p><strong>解决缺点：</strong></p>
+<ul>
+<li>Vue3 的组合 API 解决了 mixins 引起的所有问题(不清晰的数据来源，命名冲突等)，这也是 Vue3 中组合式 API 出现的原因之一</li>
+</ul>
+<h2 id="vue2-和-vue3-的区别？"><a href="#vue2-和-vue3-的区别？" class="headerlink" title="vue2 和 vue3 的区别？"></a>vue2 和 vue3 的区别？</h2><p>Vue 3 带来了许多新特性和改进，下面是与 Vue 2 相比较著的几个区别：</p>
+<ol>
+<li><p><code>ue2</code>使用的是选项式 API<code>optionsAPI </code>，<code>Vue3</code>使用组合式 API<code>composition API</code>，更好的组织代码，提高代码可维护性</p>
+</li>
+<li><p><code>Vue3</code>使用<code>Proxy</code>代理实现了新的响应式系统，比<code>Vue2</code>使用<code>Object.defineProperty</code> 有着更好的性能和更准确的数据变化追踪能力。</p>
+</li>
+<li><p><code>Vue3</code>引入了<code>Teleprot</code>组件，可以将 DOM 元素渲染到 DOM 数的其他位置，用于创建模态框、弹出框等。</p>
+</li>
+<li><p><code>Vue3</code>全局 API 名称发生了变化，同时新增了<code>watchEffect</code>、<code>Hooks</code>等功能</p>
+</li>
+<li><p><code>Vue3</code>对<code>TypeScript</code>的支持更加友好</p>
+</li>
+<li><p><code>Vue3</code>核心库的依赖更少，减少打包体积</p>
+</li>
+<li><p>vue3 支持更好的<code>Tree Shanking</code>，可以更加精确的按需要引入模块</p>
+</li>
+</ol>
+<h2 id="vue3-的生命周期"><a href="#vue3-的生命周期" class="headerlink" title="vue3 的生命周期"></a>vue3 的生命周期</h2><ol>
+<li><strong>创建阶段</strong>：在这个阶段，Vue 会创建一个空的实例，并初始化一些数据和方法。这个阶段的钩子函数有 <code>beforeCreate</code> 和 <code>created</code>。</li>
+<li><strong>挂载阶段</strong>：在这个阶段，Vue 会将实例挂载到 DOM 元素上，并渲染视图。这个阶段的钩子函数有 <code>beforeMount</code> 和 <code>mounted</code>。</li>
+<li><strong>更新阶段</strong>：在这个阶段，当数据发生变化时，Vue 会更新视图。这个阶段的钩子函数有 <code>beforeUpdate</code> 和 <code>updated</code>。</li>
+<li><strong>销毁阶段</strong>：在这个阶段，Vue 会销毁实例，并释放相关的资源。这个阶段的钩子函数有 <code>beforeDestroy</code> 和 <code>destroyed</code>。</li>
+</ol>
+<p>Vue 还提供了一些其他的钩子函数，例如 <code>activated</code> 和 <code>deactivated</code>，用于在组件被激活或停用的时候执行一些操作。</p>
+<h2 id="vue3-的模板编译优化了解吗？"><a href="#vue3-的模板编译优化了解吗？" class="headerlink" title="vue3 的模板编译优化了解吗？"></a>vue3 的模板编译优化了解吗？</h2><p>Vue3 的模板编译优化主要包括以下几个方面：</p>
+<ol>
+<li><p><strong>静态提升：</strong>Vue3 会将模板中的静态节点提升到渲染函数的外部，只生成一份，而不是每次渲染都重新创建。这样可以减少内存占用和渲染时间。</p>
+</li>
+<li><p><strong>事件监听缓存：</strong>Vue3 会缓存事件监听函数，避免重复创建。这样可以提高性能，特别是在频繁触发事件的情况下。</p>
+</li>
+<li><p><strong>插槽编译优化：</strong>Vue3 对插槽的编译进行了优化，减少了不必要的渲染和更新。</p>
+</li>
+<li><p><strong>模板预编译：</strong>Vue3 支持模板预编译，可以将模板编译成 JavaScript 函数，而不是在运行时解析模板。这样可以提高性能，特别是在大型应用中。</p>
+</li>
+<li><p><strong>优化指令：</strong>Vue3 对一些指令进行了优化，例如<code>v-if</code>、<code>v-for</code>等。这些指令的性能得到了显著提高。</p>
+</li>
+</ol>
+<h2 id="vue3-的-setup-是怎么实现的？"><a href="#vue3-的-setup-是怎么实现的？" class="headerlink" title="vue3 的 setup 是怎么实现的？"></a>vue3 的 setup 是怎么实现的？</h2><p><code>setup()</code> 钩子是在组件中使用组合式 API 的入口</p>
+<ol>
+<li><p>起初 Vue3.0 暴露变量必须 <code>return</code> 出来，<code>template</code> 中才能使用；</p>
+</li>
+<li><p>Vue3.2 后 只需要在 <code>script</code> 标签上加上 <code>setup</code> 属性，组件在编译的过程中代码运行的上下文是在 <code>setup()</code> 函数中，无需 <code>return</code>，<code>template</code> 可直接使用。</p>
+</li>
+<li><p>在 <code>setup()</code> 函数中返回的对象会暴露给模板和组件实例。其他的选项也可以通过组件实例来获取 <code>setup()</code> 暴露的属性</p>
+</li>
+<li><p><code>setup</code> 函数的第一个参数是组件的 <code>props</code>。和标准的组件一致，一个 <code>setup</code> 函数的 <code>props</code> 是响应式的，并且会在传入新的 props 时同步更新。如果你解构了 <code>props</code> 对象，解构出的变量将会丢失响应性。因此我们推荐通过 <code>props.xxx</code> 的形式来使用其中的 props。</p>
+</li>
+<li><p><code>setup</code> 函数的第二个参数是一个 <strong>Setup 上下文</strong>对象。上下文对象暴露了其他一些在 <code>setup</code> 中可能会用到的值</p>
+<div class="code-wrapper"><pre><code class="hljs arcade"><span class="hljs-keyword">export</span> default &#123;
+  setup(props, context) &#123;
+    <span class="hljs-comment">// 透传 Attributes（非响应式的对象，等价于 $attrs）</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(context.attrs)
+
+    <span class="hljs-comment">// 插槽（非响应式的对象，等价于 $slots）</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(context.slots)
+
+    <span class="hljs-comment">// 触发事件（函数，等价于 $emit）</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(context.emit)
+
+    <span class="hljs-comment">// 暴露公共属性（函数）</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(context.expose)
+  &#125;
+&#125;</code></pre></div></li>
+</ol>
+<blockquote>
+<p><strong>对于结合单文件组件使用的组合式 API，推荐通过 <code>&lt;script setup&gt;</code> 以获得更加简洁及符合人体工程学的语法。</strong></p>
+</blockquote>
+<h3 id="关于"><a href="#关于" class="headerlink" title="关于&lt;script setup&gt;"></a>关于<code>&lt;script setup&gt;</code></h3><p><code>&lt;script setup&gt;</code> (SFC) 中使用组合式 API 的编译时语法糖。当同时使用单文件组件与组合式 API 时该语法是默认推荐。相比于普通的<code>&lt;script&gt;</code>语法，它具有更多优势：</p>
+<ul>
+<li>更少的样板内容，更简洁的代码。</li>
+<li>能够使用纯 TypeScript 声明 props 和自定义事件。</li>
+<li>更好的运行时性能 (其模板会被编译成同一作用域内的渲染函数，避免了渲染上下文代理对象)。</li>
+<li>更好的 IDE 类型推导性能 (减少了语言服务器从代码中抽取类型的工作)。</li>
+</ul>
+<h3 id="setup-带来的改变："><a href="#setup-带来的改变：" class="headerlink" title="setup 带来的改变："></a><strong>setup 带来的改变：</strong></h3><ol>
+<li>属性和方法无需返回，可以直接使用</li>
+<li>组件直接挂载，无需注册</li>
+<li>自定义的指令也可以在模版中自动获得</li>
+<li>this 不再是这个活跃实例的引用</li>
+<li>默认不会对外暴露任何属性，如果有需要可使用 defineExpose</li>
+<li>带来的大量全新 api，比如 defineProps，defineEmits，withDefault，toRef，toRefs</li>
+</ol>
+<h2 id="computed-和-watch-有什么区别？"><a href="#computed-和-watch-有什么区别？" class="headerlink" title="computed 和 watch 有什么区别？"></a>computed 和 watch 有什么区别？</h2><p>我先说下计算属性和 watch 的概念:</p>
+<p><strong>计算属性:</strong></p>
+<ol>
+<li>当一个属性的结果需要通过其它数据运算得来, 此时就可以把这个属性定义成计算属性</li>
+<li>计算属性是有缓存的, 多处去使用计算属性也只会计算一次, 除非依赖的数据发生变化</li>
+<li>计算属性有完整写法, 可以通过 get 和 set 方法实现</li>
+<li>应用场景: 购物车总价, 全选</li>
+</ol>
+<p><strong>watch:</strong></p>
+<ol>
+<li>watch 是一个侦听器, 如果某个属性的值发生变化, 我们想要去做一些业务操作, 我们就可以用 watch 去侦听该属性</li>
+<li>watch 可以通过 deep 属性去实现深度侦听</li>
+<li>应用场景: 实时翻译</li>
+</ol>
+<p>再说一下计算属性和 watch 的区别:</p>
+<ol>
+<li>计算属性是属性, watch 则是对属性的侦听</li>
+<li><strong>计算属性内部不能有异步的操作, 但是 watch 是可以有异步操作的</strong></li>
+</ol>
+<h2 id="vue3-怎么做性能优化？"><a href="#vue3-怎么做性能优化？" class="headerlink" title="vue3 怎么做性能优化？"></a>vue3 怎么做性能优化？</h2><ol>
+<li><p><strong>v-if 和 v-for 不能连用：</strong>如果需要根据条件渲染列表，建议将<code>v-if</code>移动到<code>v-for</code>的外层，或者使用计算属性来过滤列表。</p>
+</li>
+<li><p><strong>页面采用 keep-alive 缓存组件：</strong>这样可以避免组件的重复渲染，提高性能。</p>
+</li>
+<li><p><strong>合理使用 v-if 和 v-show：</strong><code>v-show</code>只是切换元素的显示状态，而<code>v-if</code>会真正地创建或销毁元素。如果需要频繁切换元素的显示状态，建议使用<code>v-show</code>。</p>
+</li>
+<li><p><strong>key 保证唯一：</strong>在使用<code>v-for</code>渲染列表时，一定要给每个元素设置唯一的<code>key</code>。</p>
+</li>
+<li><p><strong>使用路由懒加载、异步组件、组件封装实现复用</strong></p>
+</li>
+<li><p><strong>防抖、节流</strong></p>
+</li>
+<li><p><strong>第三方模块按需导入</strong></p>
+</li>
+<li><p><strong>图片懒加载</strong></p>
+</li>
+<li><p><strong>代码压缩：</strong>在生产环境中，建议对代码进行压缩和优化，以减少文件的大小，提高加载速度。</p>
+</li>
+<li><p><strong>CDN 外链：</strong></p>
+<ul>
+<li><p>把项目中的三方库在打包的时候先排出</p>
+</li>
+<li><p>使用 CDN 的外部链接引入, 这样就能减少包的体积, 提高首屏加载的速度</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="ES6-新增了什么？"><a href="#ES6-新增了什么？" class="headerlink" title="ES6 新增了什么？"></a>ES6 新增了什么？</h2><ol>
+<li><strong>块级作用域：</strong>使用<code>let</code>和<code>const</code>关键字声明变量，具有块级作用域，避免了变量提升和全局污染的问题。</li>
+<li><strong>解构赋值：</strong>可以使用解构赋值语法从对象和数组中提取值，使代码更加简洁。 <code>let &#123; a, b &#125; = &#123; a: 1, b: 2 &#125;</code></li>
+<li><strong>箭头函数：</strong>使用箭头<code>=&gt;</code>定义函数，语法更加简洁，并且可以自动绑定<code>this</code>上下文。</li>
+<li><strong>模板字符串：</strong>使用反引号（&#96;）定义字符串，可以在字符串中插入变量和表达式，并且支持多行字符串。</li>
+<li><strong>剩余参数和扩展运算符：</strong>使用<code>...</code>语法表示剩余参数和扩展运算符，可以方便地处理不定数量的参数和数组。</li>
+<li><strong>数组方法：</strong>map、filter、every、reduce 等等</li>
+<li><strong>函数参数默认值：</strong>可以为函数参数设置默认值，使函数更加灵活。 <code>fn(a = 1) &#123;&#125;</code></li>
+<li><strong>Promise 异步编程解决方案：</strong>Promise 是一种处理异步操作的新方式，可以避免回调地狱，使代码更加清晰</li>
+<li><strong>模块化：</strong>import–引入、exprot default–导出</li>
+<li><strong>Map 和 Set 数据结构：</strong>Map 和 Set 是两种新的数据结构，分别用于存储键值对和唯一值。</li>
+<li><strong>async&#x2F;await(es8)</strong></li>
+</ol>
+<h2 id="TS-的特点是什么？"><a href="#TS-的特点是什么？" class="headerlink" title="TS 的特点是什么？"></a>TS 的特点是什么？</h2><ul>
+<li><p><strong>面向对象编程</strong>：TypeScript 支持面向对象编程，包括类、接口、继承、多态等特性。</p>
+</li>
+<li><p><strong>ES6 + 语法</strong>：TypeScript 支持 ES6 + 的语法，包括箭头函数、模板字符串、解构赋值等。</p>
+</li>
+<li><p><strong>模块系统</strong>：TypeScript 支持 ES6 的模块系统，可以将代码拆分成多个模块，提高代码的可维护性和可复用性。</p>
+</li>
+<li><p><strong>工具支持</strong>：TypeScript 提供了丰富的工具支持，包括编译器、代码编辑器、调试器等，可以提高开发效率。</p>
+</li>
+<li><p><strong>与 JavaScript 兼容</strong>：TypeScript 可以与 JavaScript 兼容，可以在现有的 JavaScript 项目中逐步引入 TypeScript。</p>
+</li>
+</ul>
+<h2 id="Vuex-和-Pinia-的区别"><a href="#Vuex-和-Pinia-的区别" class="headerlink" title="Vuex 和 Pinia 的区别"></a>Vuex 和 Pinia 的区别</h2><ol>
+<li><p>是什么</p>
+<ul>
+<li><p>Vuex 是 Vue2 的状态管理工具</p>
+</li>
+<li><p>Pinia 是 Vue3 的状态管理工具</p>
+</li>
+</ul>
+</li>
+<li><p>区别</p>
+<ul>
+<li><p>Pinia 对 Vue2&#x2F;3 的兼容性更好，支持 TypeScript</p>
+</li>
+<li><p>Pnina 是 Vuex 的替代版，符合 Vue3 组合式 API，让代码扁平化</p>
+</li>
+<li><p>Pnina 抛弃传统的 mutation，只有 state，getter 和 action，简化状态管理</p>
+</li>
+</ul>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue/" class="category-chain-item">Vue</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Vue/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1/" class="category-chain-item">面试八股</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue面试八股文二</div>
+      <div>http://example.com/posts/21010.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/23119.html" title="Swiper">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Swiper</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/14099.html" title="Vue面试八股文一">
+                        <span class="hidden-mobile">Vue面试八股文一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
